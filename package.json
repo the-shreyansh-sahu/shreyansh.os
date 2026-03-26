@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run dev",
-    "build": "npm run build --webpack",
-    "start": "npm start",
-    "lint": "npm lint"
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@react-three/drei": "^9.120.4",
