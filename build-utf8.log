@@ -1,0 +1,280 @@
+﻿   Γû▓ Next.js 15.1.0
+
+   Creating an optimized production build ...
+node.exe : Failed to 
+compile.
+At C:\nvm4w\nodejs\npx.p
+s1:29 char:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
+    + CategoryInfo      
+        : NotSpecified  
+  : (Failed to compil   
+ e.:String) [], Remo    
+teException
+    + FullyQualifiedErr 
+   orId : NativeComman  
+  dError
+ 
+
+src\styles\fonts.ts
+An error occurred in 
+`next/font`.
+
+Error: Cannot find 
+module 'autoprefixer'
+Require stack:
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack\config\b
+locks\css\plugins.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack\config\b
+locks\css\index.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack\config\i
+ndex.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack-config.j
+s
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack\plugins\
+next-trace-entrypoints-p
+lugin.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\collect-build-tr
+aces.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\index.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\cli\next-build.js
+    at 
+Function.<anonymous> (no
+de:internal/modules/cjs/
+loader:1405:15)
+    at D:\VS_Projects\ca
+port\node_modules\.pnpm\
+next@15.1.0_react-dom@19
+.2.4_react@19.2.4__react
+@19.2.4\node_modules\nex
+t\dist\server\require-ho
+ok.js:55:36
+    at Function.resolve 
+(node:internal/modules/h
+elpers:145:19)
+    at loadPlugin (D:\VS
+_Projects\caport\node_mo
+dules\.pnpm\next@15.1.0_
+react-dom@19.2.4_react@1
+9.2.4__react@19.2.4\node
+_modules\next\dist\build
+\webpack\config\blocks\c
+ss\plugins.js:49:32)
+    at D:\VS_Projects\ca
+port\node_modules\.pnpm\
+next@15.1.0_react-dom@19
+.2.4_react@19.2.4__react
+@19.2.4\node_modules\nex
+t\dist\build\webpack\con
+fig\blocks\css\plugins.j
+s:157:56
+    at Array.map 
+(<anonymous>)
+    at 
+getPostCssPlugins (D:\VS
+_Projects\caport\node_mo
+dules\.pnpm\next@15.1.0_
+react-dom@19.2.4_react@1
+9.2.4__react@19.2.4\node
+_modules\next\dist\build
+\webpack\config\blocks\c
+ss\plugins.js:157:47)
+    at async D:\VS_Proje
+cts\caport\node_modules\
+.pnpm\next@15.1.0_react-
+dom@19.2.4_react@19.2.4_
+_react@19.2.4\node_modul
+es\next\dist\build\webpa
+ck\config\blocks\css\ind
+ex.js:124:36
+    at async D:\VS_Proje
+cts\caport\node_modules\
+.pnpm\next@15.1.0_react-
+dom@19.2.4_react@19.2.4_
+_react@19.2.4\node_modul
+es\next\dist\build\webpa
+ck\loaders\next-font-loa
+der\index.js:86:33
+    at async 
+Span.traceAsyncFn (D:\VS
+_Projects\caport\node_mo
+dules\.pnpm\next@15.1.0_
+react-dom@19.2.4_react@1
+9.2.4__react@19.2.4\node
+_modules\next\dist\trace
+\trace.js:153:20)
+
+src\styles\fonts.ts
+An error occurred in 
+`next/font`.
+
+Error: Cannot find 
+module 'autoprefixer'
+Require stack:
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack\config\b
+locks\css\plugins.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack\config\b
+locks\css\index.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack\config\i
+ndex.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack-config.j
+s
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\webpack\plugins\
+next-trace-entrypoints-p
+lugin.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\collect-build-tr
+aces.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\build\index.js
+- D:\VS_Projects\caport\
+node_modules\.pnpm\next@
+15.1.0_react-dom@19.2.4_
+react@19.2.4__react@19.2
+.4\node_modules\next\dis
+t\cli\next-build.js
+    at 
+Function.<anonymous> (no
+de:internal/modules/cjs/
+loader:1405:15)
+    at D:\VS_Projects\ca
+port\node_modules\.pnpm\
+next@15.1.0_react-dom@19
+.2.4_react@19.2.4__react
+@19.2.4\node_modules\nex
+t\dist\server\require-ho
+ok.js:55:36
+    at Function.resolve 
+(node:internal/modules/h
+elpers:145:19)
+    at loadPlugin (D:\VS
+_Projects\caport\node_mo
+dules\.pnpm\next@15.1.0_
+react-dom@19.2.4_react@1
+9.2.4__react@19.2.4\node
+_modules\next\dist\build
+\webpack\config\blocks\c
+ss\plugins.js:49:32)
+    at D:\VS_Projects\ca
+port\node_modules\.pnpm\
+next@15.1.0_react-dom@19
+.2.4_react@19.2.4__react
+@19.2.4\node_modules\nex
+t\dist\build\webpack\con
+fig\blocks\css\plugins.j
+s:157:56
+    at Array.map 
+(<anonymous>)
+    at 
+getPostCssPlugins (D:\VS
+_Projects\caport\node_mo
+dules\.pnpm\next@15.1.0_
+react-dom@19.2.4_react@1
+9.2.4__react@19.2.4\node
+_modules\next\dist\build
+\webpack\config\blocks\c
+ss\plugins.js:157:47)
+    at async D:\VS_Proje
+cts\caport\node_modules\
+.pnpm\next@15.1.0_react-
+dom@19.2.4_react@19.2.4_
+_react@19.2.4\node_modul
+es\next\dist\build\webpa
+ck\config\blocks\css\ind
+ex.js:124:36
+    at async D:\VS_Proje
+cts\caport\node_modules\
+.pnpm\next@15.1.0_react-
+dom@19.2.4_react@19.2.4_
+_react@19.2.4\node_modul
+es\next\dist\build\webpa
+ck\loaders\next-font-loa
+der\index.js:86:33
+    at async 
+Span.traceAsyncFn (D:\VS
+_Projects\caport\node_mo
+dules\.pnpm\next@15.1.0_
+react-dom@19.2.4_react@1
+9.2.4__react@19.2.4\node
+_modules\next\dist\trace
+\trace.js:153:20)
+
+
+> Build failed because 
+of webpack errors

@@ -1,0 +1,554 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── DARK THEME (default) ───────────────────────────────────────────────── */
+:root {
+  /* Next.js defaults adapted */
+  --background: #0a0a0f;
+  --foreground: #f0f0f8;
+
+  /* Core surfaces */
+  --surface-base: #0a0a0f;
+  --surface-elevated: #111118;
+  --surface-overlay: #1a1a24;
+  --surface-glass: rgba(20, 20, 32, 0.75);
+  --surface-glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Glass Interactions */
+  --glass-hover: rgba(255, 255, 255, 0.10);
+  --glass-active: rgba(255, 255, 255, 0.15);
+  --glass-btn-bg: rgba(255, 255, 255, 0.05);
+  --glass-dot: rgba(255, 255, 255, 0.60);
+
+  /* Win11 Mica */
+  --win11-mica: rgba(16, 16, 28, 0.85);
+  --win11-mica-border: rgba(255, 255, 255, 0.06);
+  --win11-titlebar: rgba(12, 12, 20, 0.90);
+  --win11-taskbar: rgba(8, 8, 16, 0.92);
+  --win11-taskbar-border: rgba(255, 255, 255, 0.06);
+  --win11-notif: rgba(14, 14, 24, 0.96);
+  --win11-selection: rgba(0, 120, 212, 0.18);
+
+  /* One UI surfaces */
+  --oneui-surface: #111118;
+  --oneui-card: #1c1c28;
+  --oneui-card-border: rgba(255, 255, 255, 0.06);
+  --oneui-navbar: rgba(10, 10, 18, 0.95);
+  --oneui-dock: rgba(28, 28, 40, 0.85);
+  --oneui-dock-border: rgba(255, 255, 255, 0.08);
+  --oneui-sheet-handle: rgba(255, 255, 255, 0.20);
+
+  /* Wallpapers (Win11 desktop + One UI) */
+  --wallpaper-start: #0a0a18;
+  --wallpaper-mid: #10102e;
+  --wallpaper-end: #1a0a28;
+
+  /* Text */
+  --text-primary: #f0f0f8;
+  --text-secondary: #9090a8;
+  --text-tertiary: #505068;
+  --text-on-accent: #0a0a0f;
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-hover: rgba(255, 255, 255, 0.25);
+
+  /* Boot (always dark — never affected by theme toggle) */
+  --boot-bg: #000000;
+  --boot-text: #c0c0d0;
+  --boot-highlight: #4fc3f7;
+  --boot-bar: #4fc3f7;
+  --boot-bar-bg: #1a1a2a;
+
+  /* Shared accents — same in both themes */
+  --accent-primary: #4fc3f7;
+  --accent-primary-dim: rgba(79, 195, 247, 0.15);
+  --accent-green: #4caf7d;
+  --accent-amber: #ffb74d;
+  --accent-red: #ef5350;
+  --accent-purple: #9c6fff;
+  --accent-win11-blue: #0078d4;
+
+  /* Chrome buttons */
+  --chrome-close: #ef5350;
+  --chrome-minimize: #ffb74d;
+  --chrome-maximize: #4caf7d;
+
+  /* Neon (Three.js only) */
+  --neon-blue: #00b4ff;
+  --neon-purple: #9c6fff;
+  --neon-green: #00ff88;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-xxl: 20px;
+
+  /* One UI 7 specific */
+  --oneui-bg: #f4f4f7;
+  --oneui-panel: rgba(249, 249, 252, 0.94);
+  --oneui-surface: rgba(255, 255, 255, 0.92);
+  --oneui-surface-2: #ececf1;
+  --oneui-border: rgba(20, 23, 32, 0.08);
+  --oneui-border-strong: rgba(20, 23, 32, 0.16);
+  --oneui-text: #10131a;
+  --oneui-text-soft: #5d6472;
+  --oneui-text-faint: #8b92a0;
+  --oneui-accent: #0f6fff;
+  --oneui-accent-soft: rgba(15, 111, 255, 0.12);
+  --oneui-success: #14a073;
+  --oneui-success-soft: rgba(20, 160, 115, 0.12);
+  --oneui-amber: #f0a13c;
+  --oneui-amber-soft: rgba(240, 161, 60, 0.12);
+}
+
+/* ── LIGHT THEME ────────────────────────────────────────────────────────── */
+:root[data-theme="light"] {
+  --background: #f0eff4;
+  --foreground: #0d0d18;
+
+  /* Core surfaces — warm white, not pure white (avoids harshness) */
+  --surface-base: #f0eff4;
+  --surface-elevated: #ffffff;
+  --surface-overlay: #e8e7f0;
+  --surface-glass: rgba(255, 255, 255, 0.72);
+  --surface-glass-border: rgba(0, 0, 0, 0.08);
+
+  /* Glass Interactions Light */
+  --glass-hover: rgba(0, 0, 0, 0.06);
+  --glass-active: rgba(0, 0, 0, 0.10);
+  --glass-btn-bg: rgba(0, 0, 0, 0.04);
+  --glass-dot: rgba(0, 0, 0, 0.50);
+
+  /* Win11 Mica light */
+  --win11-mica: rgba(248, 247, 252, 0.88);
+  --win11-mica-border: rgba(0, 0, 0, 0.06);
+  --win11-titlebar: rgba(240, 238, 248, 0.92);
+  --win11-taskbar: rgba(232, 230, 244, 0.94);
+  --win11-taskbar-border: rgba(0, 0, 0, 0.08);
+  --win11-notif: rgba(245, 244, 252, 0.97);
+  --win11-selection: rgba(0, 120, 212, 0.12);
+
+  /* One UI light surfaces */
+  --oneui-surface: #f5f5f8;
+  --oneui-card: #ffffff;
+  --oneui-card-border: rgba(0, 0, 0, 0.06);
+  --oneui-navbar: rgba(245, 244, 252, 0.96);
+  --oneui-dock: rgba(230, 228, 244, 0.88);
+  --oneui-dock-border: rgba(0, 0, 0, 0.08);
+  --oneui-sheet-handle: rgba(0, 0, 0, 0.15);
+
+  /* Wallpapers — light, airy */
+  --wallpaper-start: #dde4f0;
+  --wallpaper-mid: #e8dff5;
+  --wallpaper-end: #d5e8f5;
+
+  /* Text */
+  --text-primary: #0d0d18;
+  --text-secondary: #5a5a78;
+  --text-tertiary: #9090a8;
+  --text-on-accent: #ffffff;
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+  --scrollbar-hover: rgba(0, 0, 0, 0.25);
+
+  /* Accents */
+  --accent-primary: #0078d4;
+  --accent-primary-dim: rgba(0, 120, 212, 0.12);
+  --accent-green: #2e7d52;
+  --accent-amber: #c17a1a;
+  --accent-red: #c62828;
+  --accent-purple: #6a3fb5;
+
+  /* Neon */
+  --neon-blue: #0099cc;
+  --neon-purple: #7b2fbf;
+  --neon-green: #00b860;
+
+  --oneui-bg: #f4f4f7;
+  --oneui-panel: rgba(249, 249, 252, 0.94);
+  --oneui-surface: rgba(255, 255, 255, 0.92);
+  --oneui-surface-2: #ececf1;
+  --oneui-border: rgba(20, 23, 32, 0.08);
+  --oneui-border-strong: rgba(20, 23, 32, 0.16);
+  --oneui-text: #10131a;
+  --oneui-text-soft: #5d6472;
+  --oneui-text-faint: #8b92a0;
+  --oneui-accent: #0f6fff;
+  --oneui-accent-soft: rgba(15, 111, 255, 0.12);
+  --oneui-success: #14a073;
+  --oneui-success-soft: rgba(20, 160, 115, 0.12);
+  --oneui-amber: #f0a13c;
+  --oneui-amber-soft: rgba(240, 161, 60, 0.12);
+}
+
+:root[data-theme="dark"] {
+  --oneui-bg: #111319;
+  --oneui-panel: rgba(22, 25, 33, 0.94);
+  --oneui-surface: rgba(30, 34, 43, 0.92);
+  --oneui-surface-2: #1c2029;
+  --oneui-border: rgba(255, 255, 255, 0.07);
+  --oneui-border-strong: rgba(255, 255, 255, 0.16);
+  --oneui-text: #f4f7fb;
+  --oneui-text-soft: #b0b7c4;
+  --oneui-text-faint: #7b8392;
+  --oneui-accent: #7db4ff;
+  --oneui-accent-soft: rgba(125, 180, 255, 0.14);
+  --oneui-success: #45d39b;
+  --oneui-success-soft: rgba(69, 211, 155, 0.14);
+  --oneui-amber: #f3b95a;
+  --oneui-amber-soft: rgba(243, 185, 90, 0.14);
+}
+
+@layer components {
+
+  /* Shared glass surface */
+  .glass-surface {
+    background: var(--surface-glass);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid var(--surface-glass-border);
+  }
+
+  /* Windows 11 Mica */
+  .mica-surface {
+    background: var(--win11-mica);
+    backdrop-filter: blur(40px) saturate(1.6);
+    -webkit-backdrop-filter: blur(40px) saturate(1.6);
+    border-color: var(--win11-mica-border);
+  }
+
+  /* One UI bottom sheet */
+  .oneui-sheet {
+    background: var(--oneui-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--oneui-card-border);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .oneui-card {
+    background: var(--oneui-surface);
+    border: 1px solid var(--oneui-border);
+    border-radius: 26px;
+    padding: 18px;
+    box-shadow: 0 12px 26px rgba(15, 19, 26, 0.05);
+  }
+
+  .oneui-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+  }
+
+  .oneui-section-title {
+    color: var(--oneui-text);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+  .oneui-eyebrow {
+    color: var(--oneui-text-faint);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .oneui-row-title {
+    color: var(--oneui-text);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .oneui-row-subtitle {
+    margin-top: 2px;
+    color: var(--oneui-text-soft);
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .oneui-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    background: var(--oneui-accent-soft);
+    color: var(--oneui-accent);
+    padding: 8px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .oneui-metric {
+    border-radius: 22px;
+    background: var(--oneui-surface);
+    border: 1px solid var(--oneui-border);
+    padding: 16px;
+  }
+
+  .oneui-metric-blue {
+    background: linear-gradient(180deg, var(--oneui-accent-soft), var(--oneui-surface));
+  }
+
+  .oneui-metric-green {
+    background: linear-gradient(180deg, var(--oneui-success-soft), var(--oneui-surface));
+  }
+
+  .oneui-metric-amber {
+    background: linear-gradient(180deg, var(--oneui-amber-soft), var(--oneui-surface));
+  }
+
+  .oneui-metric-label {
+    color: var(--oneui-text-soft);
+    font-size: 0.82rem;
+  }
+
+  .oneui-metric-value {
+    margin-top: 6px;
+    color: var(--oneui-text);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+
+  .oneui-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    border-radius: 999px;
+    padding: 0 16px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .oneui-button:active {
+    transform: scale(0.985);
+  }
+
+  .oneui-button-primary {
+    background: var(--oneui-accent);
+    color: white;
+  }
+
+  .oneui-button-secondary {
+    background: var(--oneui-surface-2);
+    color: var(--oneui-text);
+  }
+
+  .oneui-input {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid var(--oneui-border);
+    background: var(--oneui-surface);
+    padding: 14px 16px;
+    color: var(--oneui-text);
+    outline: none;
+  }
+
+  .oneui-input::placeholder {
+    color: var(--oneui-text-faint);
+  }
+
+  .oneui-input:focus {
+    border-color: var(--oneui-accent);
+    box-shadow: 0 0 0 3px var(--oneui-accent-soft);
+  }
+
+  .oneui-app-tile {
+    display: flex;
+    height: 68px;
+    width: 68px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.55rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      0 8px 18px rgba(16, 24, 40, 0.18);
+  }
+
+  .oneui-quick-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 22px;
+    background: var(--oneui-surface);
+    border: 1px solid var(--oneui-border);
+    color: var(--oneui-text);
+    padding: 14px 16px;
+    font-weight: 600;
+  }
+
+  .oneui-quick-toggle-active {
+    background: linear-gradient(180deg, var(--oneui-accent-soft), var(--oneui-surface));
+    border-color: transparent;
+  }
+
+  .oneui-quick-toggle-icon {
+    display: flex;
+    height: 34px;
+    width: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--oneui-surface-2);
+  }
+
+  .oneui-slider-track {
+    height: 10px;
+    border-radius: 999px;
+    background: var(--oneui-surface-2);
+    overflow: hidden;
+  }
+
+  .oneui-slider-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--oneui-accent);
+  }
+
+  .oneui-clear-button {
+    color: var(--oneui-accent);
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+
+  .oneui-recents-card {
+    width: 100%;
+    border-radius: 26px;
+    background: var(--oneui-surface);
+    border: 1px solid var(--oneui-border);
+    padding: 18px;
+    text-align: left;
+  }
+
+  .oneui-gesture-pill {
+    height: 5px;
+    width: 128px;
+    border-radius: 999px;
+    background: white;
+    opacity: 0.92;
+  }
+
+  .oneui-nav-hint {
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .oneui-nav-button {
+    display: flex;
+    height: 38px;
+    width: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--oneui-surface-2);
+  }
+}
+
+/* Scrollbar — thin, both platforms, theme-aware */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+
+/* Prevent transition flash on page load */
+:root {
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Smooth token transitions */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.2s ease;
+}
+
+canvas,
+[data-no-theme-transition] {
+  transition: none !important;
+}
+
+.oneui-wallpaper {
+  background: #7789a8;
+}
+
+:root[data-theme="dark"] .oneui-wallpaper {
+  background: #1c2130;
+}
+
+.oneui-wallpaper-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(8px);
+}
+
+.oneui-wallpaper-orb-a {
+  right: -22%;
+  top: 10%;
+  height: 340px;
+  width: 340px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.05) 68%, transparent 74%);
+}
+
+.oneui-wallpaper-orb-b {
+  left: -20%;
+  bottom: 8%;
+  height: 380px;
+  width: 380px;
+  background: radial-gradient(circle, rgba(210, 227, 255, 0.42), rgba(210, 227, 255, 0.06) 68%, transparent 72%);
+}
+
+.oneui-wallpaper-glow {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(9, 10, 16, 0.2) 44%, rgba(9, 10, 16, 0.46));
+}
+
+/* Boot cursor blink */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
