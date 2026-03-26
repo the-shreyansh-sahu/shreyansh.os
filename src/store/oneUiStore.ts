@@ -14,6 +14,7 @@ interface OneUiStore {
     recents: OneUiRoute[]
     navMode: OneUiNavMode
     isJiggling: boolean
+    homePage: number
     quickPanelOpen: boolean
     recentsOpen: boolean
     appDrawerOpen: boolean
@@ -27,6 +28,7 @@ interface OneUiStore {
     toggleQuickPanel: () => void
     setQuickPanelOpen: (value: boolean) => void
     setAppDrawerOpen: (value: boolean) => void
+    setHomePage: (value: number) => void
     setNavMode: (mode: OneUiNavMode) => void
     setJiggling: (value: boolean) => void
 }
@@ -50,6 +52,7 @@ export const useOneUiStore = create<OneUiStore>((set, get) => ({
     recents: [],
     navMode: 'gesture',
     isJiggling: false,
+    homePage: 0,
     quickPanelOpen: false,
     recentsOpen: false,
     appDrawerOpen: false,
@@ -138,6 +141,10 @@ export const useOneUiStore = create<OneUiStore>((set, get) => ({
 
     setAppDrawerOpen: (value) => {
         set({ appDrawerOpen: value, quickPanelOpen: false, recentsOpen: false })
+    },
+
+    setHomePage: (value) => {
+        set({ homePage: value })
     },
 
     setNavMode: (mode) => {

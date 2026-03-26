@@ -234,7 +234,10 @@ export default function ProjectsApp({ isMobile }: ProjectsAppProps) {
     }
 
     return (
-        <div className="flex h-full flex-col overflow-hidden bg-[var(--surface-base)] text-[var(--text-primary)]">
+        <div
+            className="flex h-full flex-col overflow-hidden text-[var(--text-primary)]"
+            style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 90%, #20283a 10%) 0%, color-mix(in srgb, var(--surface-base) 86%, #192131 14%) 100%)' }}
+        >
             <div className="flex h-11 items-center gap-1 border-b border-[var(--surface-glass-border)] bg-[var(--win11-titlebar)] px-3">
                 <ToolbarIcon icon={ArrowLeft} disabled />
                 <ToolbarIcon icon={ArrowRight} disabled />
@@ -254,7 +257,10 @@ export default function ProjectsApp({ isMobile }: ProjectsAppProps) {
                 </div>
             </div>
 
-            <div className="flex h-11 items-center gap-2 border-b border-[var(--surface-glass-border)] bg-[var(--surface-base)] px-4 text-xs">
+            <div
+                className="flex h-11 items-center gap-2 border-b border-[var(--surface-glass-border)] px-4 text-xs"
+                style={{ background: 'color-mix(in srgb, var(--surface-base) 78%, #21293b 22%)' }}
+            >
                 <CommandButton label="New" icon={FolderOpen} />
                 <CommandButton label="Sort" icon={ChevronDown} onClick={() => handleSort(sortKey)} />
                 <CommandButton label="View" icon={view === 'details' ? TableProperties : view === 'list' ? List : LayoutGrid} onClick={() => setView((current) => (current === 'details' ? 'list' : current === 'list' ? 'tiles' : 'details'))} />
@@ -262,7 +268,10 @@ export default function ProjectsApp({ isMobile }: ProjectsAppProps) {
             </div>
 
             <div className="flex min-h-0 flex-1">
-                <aside className="hidden w-[240px] flex-col border-r border-[var(--surface-glass-border)] bg-[var(--surface-elevated)]/65 p-2 backdrop-blur-xl md:flex">
+                <aside
+                    className="hidden w-[240px] flex-col border-r border-[var(--surface-glass-border)] p-2 backdrop-blur-xl md:flex"
+                    style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 84%, #263049 16%) 0%, color-mix(in srgb, var(--surface-elevated) 76%, var(--surface-base) 24%) 100%)' }}
+                >
                     {SIDEBAR_SECTIONS.map((section) => (
                         <div key={section.title} className="mb-4">
                             <div className="px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--text-tertiary)]">{section.title}</div>
@@ -290,7 +299,12 @@ export default function ProjectsApp({ isMobile }: ProjectsAppProps) {
                     ))}
                 </aside>
 
-                <main ref={detailsPaneRef} className="flex min-w-0 flex-1 flex-col bg-[var(--surface-base)]" onClick={() => setContextMenu(null)}>
+                <main
+                    ref={detailsPaneRef}
+                    className="flex min-w-0 flex-1 flex-col"
+                    style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--surface-base) 80%, #20283a 20%) 0%, color-mix(in srgb, var(--surface-base) 94%, var(--surface-elevated) 6%) 100%)' }}
+                    onClick={() => setContextMenu(null)}
+                >
                     <div className="flex h-9 items-center justify-between border-b border-[var(--surface-glass-border)] px-4 text-[11px] text-[var(--text-secondary)]">
                         <span>{sortedProjects.length} items</span>
                         <span>Folder tools active</span>
@@ -298,7 +312,10 @@ export default function ProjectsApp({ isMobile }: ProjectsAppProps) {
                     <div className="min-h-0 flex-1 overflow-auto">{renderContent()}</div>
                 </main>
 
-                <aside className="hidden w-[280px] flex-col border-l border-[var(--surface-glass-border)] bg-[var(--surface-elevated)]/72 p-4 backdrop-blur-xl lg:flex">
+                <aside
+                    className="hidden w-[280px] flex-col border-l border-[var(--surface-glass-border)] p-4 backdrop-blur-xl lg:flex"
+                    style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 86%, #243048 14%) 0%, color-mix(in srgb, var(--surface-elevated) 78%, var(--surface-base) 22%) 100%)' }}
+                >
                     {selectedProject ? (
                         <>
                             <div className="mb-4 flex items-center gap-3">

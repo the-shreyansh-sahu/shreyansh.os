@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from 'lucide-react'
-import { OneUiCard, OneUiInput, OneUiPrimaryButton, OneUiSection, OneUiTextarea } from '../oneui/OneUiPrimitives'
+import { OneUiBadge, OneUiCard, OneUiInput, OneUiPrimaryButton, OneUiSection, OneUiTextarea } from '../oneui/OneUiPrimitives'
 
 interface ContactAppProps {
     isMobile?: boolean
@@ -54,45 +54,44 @@ export default function ContactApp({ isMobile }: ContactAppProps) {
     if (isMobile) {
         return (
             <div className="space-y-5 px-5 pb-8 pt-5">
-                <OneUiCard className="space-y-4">
-                    <div className="text-center">
-                        <div className="text-[2rem] font-semibold tracking-[-0.06em] text-[var(--oneui-text)]">Shreyansh Sahu</div>
-                        <div className="mt-1 text-sm text-[var(--oneui-text-soft)]">Contacts card</div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-3">
-                        <div className="rounded-[1.4rem] bg-[var(--oneui-surface-2)] px-3 py-4 text-center">
-                            <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--oneui-accent-soft)] text-[var(--oneui-accent)]"><Phone size={18} /></div>
-                            <div className="text-xs font-medium text-[var(--oneui-text)]">Call</div>
+                <OneUiCard className="space-y-4 overflow-hidden">
+                    <div className="rounded-[2rem] bg-[linear-gradient(180deg,rgba(114,167,255,0.18),rgba(255,255,255,0.08))] p-5">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <div className="oneui-eyebrow">Phone</div>
+                                <div className="text-[2rem] font-semibold tracking-[-0.06em] text-[var(--oneui-text)]">Shreyansh Sahu</div>
+                                <div className="mt-1 text-sm text-[var(--oneui-text-soft)]">Primary contact</div>
+                            </div>
+                            <OneUiBadge>Available</OneUiBadge>
                         </div>
-                        <div className="rounded-[1.4rem] bg-[var(--oneui-surface-2)] px-3 py-4 text-center">
-                            <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--oneui-accent-soft)] text-[var(--oneui-accent)]"><Mail size={18} /></div>
-                            <div className="text-xs font-medium text-[var(--oneui-text)]">Text</div>
-                        </div>
-                        <div className="rounded-[1.4rem] bg-[var(--oneui-surface-2)] px-3 py-4 text-center">
-                            <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--oneui-accent-soft)] text-[var(--oneui-accent)]"><Send size={18} /></div>
-                            <div className="text-xs font-medium text-[var(--oneui-text)]">Email</div>
+                        <div className="mt-5 grid grid-cols-3 gap-3">
+                            <PhoneAction icon={Phone} label="Call" value="+91 93183 21133" />
+                            <PhoneAction icon={Mail} label="Mail" value="mail@shreyanshsahu.com" />
+                            <PhoneAction icon={Send} label="Message" value="Business" />
                         </div>
                     </div>
                 </OneUiCard>
 
-                <OneUiSection title="Contact info" eyebrow="Details">
-                    <OneUiCard className="space-y-4">
-                        <ContactAction icon={Phone} title="Call" value="+91 93183 21133" />
+                <OneUiSection title="Contact methods" eyebrow="Details">
+                    <OneUiCard className="divide-y divide-[var(--oneui-border)] py-0">
+                        <ContactAction icon={Phone} title="Mobile" value="+91 93183 21133" />
                         <ContactAction icon={Mail} title="Email" value="mail@shreyanshsahu.com" />
                         <ContactAction icon={MapPin} title="Location" value="Gurugram, India" />
                     </OneUiCard>
                 </OneUiSection>
 
                 <OneUiSection title="Send message" eyebrow="Compose">
-                    <form onSubmit={handleSubmit} className="space-y-3">
-                        <OneUiInput required type="text" placeholder="Full name" />
-                        <OneUiInput required type="email" placeholder="Email address" />
-                        <OneUiTextarea required placeholder="What do you want to build together?" rows={5} />
-                        <OneUiPrimaryButton disabled={status === 'loading'} className="w-full">
-                            {status === 'loading' ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
-                            {status === 'loading' ? 'Sending...' : 'Send message'}
-                        </OneUiPrimaryButton>
-                    </form>
+                    <OneUiCard className="space-y-3">
+                        <form onSubmit={handleSubmit} className="space-y-3">
+                            <OneUiInput required type="text" placeholder="Full name" />
+                            <OneUiInput required type="email" placeholder="Email address" />
+                            <OneUiTextarea required placeholder="What do you want to build together?" rows={5} />
+                            <OneUiPrimaryButton disabled={status === 'loading'} className="w-full">
+                                {status === 'loading' ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                                {status === 'loading' ? 'Sending...' : 'Send message'}
+                            </OneUiPrimaryButton>
+                        </form>
+                    </OneUiCard>
                 </OneUiSection>
             </div>
         )
@@ -132,17 +131,18 @@ export default function ContactApp({ isMobile }: ContactAppProps) {
                     )}
                 </button>
             </form>
+        </div>
+    )
+}
 
-            <div className="flex justify-center gap-8 pt-4 opacity-40">
-                <div className="text-center">
-                    <p className="text-[9px] uppercase font-bold mb-1 font-mono">Email</p>
-                    <p className="text-xs">mail@shreyanshsahu.com</p>
-                </div>
-                <div className="text-center">
-                    <p className="text-[9px] uppercase font-bold mb-1 font-mono">Location</p>
-                    <p className="text-xs">Gurugram, India</p>
-                </div>
+function PhoneAction({ icon: Icon, label, value }: { icon: typeof Phone; label: string; value: string }) {
+    return (
+        <div className="rounded-[1.4rem] bg-[var(--oneui-surface)] px-3 py-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.55)]">
+            <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--oneui-accent-soft)] text-[var(--oneui-accent)]">
+                <Icon size={18} />
             </div>
+            <div className="text-xs font-semibold text-[var(--oneui-text)]">{label}</div>
+            <div className="mt-1 text-[11px] text-[var(--oneui-text-soft)]">{value}</div>
         </div>
     )
 }

@@ -4,6 +4,10 @@ import { useEffect, useState } from 'react'
 import { BatteryFull, SignalHigh, Wifi } from 'lucide-react'
 import { useOneUiStore } from '../../store/oneUiStore'
 
+function formatTime(date: Date) {
+    return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+}
+
 export function OneUiStatusBar() {
     const toggleQuickPanel = useOneUiStore((s) => s.toggleQuickPanel)
     const [time, setTime] = useState(new Date())
@@ -16,13 +20,16 @@ export function OneUiStatusBar() {
     return (
         <button
             onClick={toggleQuickPanel}
-            className="absolute left-0 right-0 top-0 z-[300] flex h-10 items-center justify-between px-5 text-[13px] font-semibold text-white pointer-events-auto"
+            className="absolute left-0 right-0 top-0 z-[300] flex h-11 items-center justify-between px-6 text-[13px] font-semibold text-white pointer-events-auto"
         >
-            <div>{time.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</div>
-            <div className="flex items-center gap-2">
-                <SignalHigh size={15} />
-                <Wifi size={15} />
-                <BatteryFull size={16} />
+            <div className="tracking-[-0.02em]">{formatTime(time)}</div>
+            <div className="flex items-center gap-2.5">
+                <SignalHigh size={14} strokeWidth={2.2} />
+                <Wifi size={14} strokeWidth={2.2} />
+                <div className="flex items-center gap-1">
+                    <span className="text-[11px] font-bold">78</span>
+                    <BatteryFull size={16} strokeWidth={2.2} />
+                </div>
             </div>
         </button>
     )

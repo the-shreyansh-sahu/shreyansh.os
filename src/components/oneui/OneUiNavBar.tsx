@@ -22,7 +22,7 @@ export function OneUiNavBar() {
     }
 
     return (
-        <div className="absolute bottom-0 left-0 right-0 z-[310] border-t border-[var(--oneui-border)] bg-[var(--oneui-panel)] px-10 pb-4 pt-3 pointer-events-auto">
+        <div className="absolute bottom-0 left-0 right-0 z-[310] border-t border-white/10 bg-[var(--oneui-panel)]/96 px-10 pb-4 pt-3 backdrop-blur-[28px] pointer-events-auto">
             <div className="flex items-center justify-between text-[var(--oneui-text)]">
                 <button className="oneui-nav-button" onClick={openRecents}><Menu size={18} /></button>
                 <button className="oneui-nav-button" onClick={goHome}><Square size={18} /></button>

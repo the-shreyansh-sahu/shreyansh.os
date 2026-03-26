@@ -70,8 +70,15 @@ export default function SkillsApp({ isMobile }: SkillsAppProps) {
     }
 
     return (
-        <div ref={rootRef} className="flex h-full min-h-full bg-[var(--surface-base)] text-[var(--text-primary)]">
-            <aside className={cn('w-[260px] flex-col border-r border-[var(--surface-glass-border)] bg-[var(--surface-elevated)]/88 backdrop-blur-xl', showSidebar ? 'flex' : 'hidden')}>
+        <div
+            ref={rootRef}
+            className="flex h-full min-h-full text-[var(--text-primary)]"
+            style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 92%, #1e2434 8%) 0%, color-mix(in srgb, var(--surface-base) 84%, #1a2030 16%) 100%)' }}
+        >
+            <aside
+                className={cn('w-[260px] flex-col border-r border-[var(--surface-glass-border)] backdrop-blur-xl', showSidebar ? 'flex' : 'hidden')}
+                style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 88%, #242b3d 12%) 0%, color-mix(in srgb, var(--surface-elevated) 80%, var(--surface-base) 20%) 100%)' }}
+            >
                 <div className="px-5 py-4 border-b border-[var(--surface-glass-border)]">
                     <div className="text-[11px] uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Task Manager</div>
                     <div className="mt-1 text-lg font-semibold">Performance</div>
@@ -98,7 +105,10 @@ export default function SkillsApp({ isMobile }: SkillsAppProps) {
                 </div>
             </aside>
 
-            <main className="flex min-w-0 flex-1 flex-col bg-[var(--surface-base)]">
+            <main
+                className="flex min-w-0 flex-1 flex-col"
+                style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--surface-base) 78%, #20283a 22%) 0%, color-mix(in srgb, var(--surface-base) 90%, var(--surface-elevated) 10%) 100%)' }}
+            >
                 <div className={cn('flex gap-3 border-b border-[var(--surface-glass-border)] px-4 py-4 sm:px-6', compactHeader ? 'flex-col' : 'flex-row items-center justify-between')}>
                     <div>
                         <div className="text-[11px] uppercase tracking-[0.14em] text-[var(--text-tertiary)]">Skills Monitor</div>
@@ -110,7 +120,10 @@ export default function SkillsApp({ isMobile }: SkillsAppProps) {
                     </div>
                 </div>
 
-                <div className="min-h-0 flex-1 overflow-y-auto bg-[var(--surface-base)]">
+                <div
+                    className="min-h-0 flex-1 overflow-y-auto"
+                    style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--surface-base) 82%, #1f2738 18%) 0%, color-mix(in srgb, var(--surface-base) 94%, var(--surface-elevated) 6%) 100%)' }}
+                >
                     <div className={cn('grid gap-4 p-4 sm:p-6', showSummaryRail ? 'grid-cols-[minmax(0,1.35fr)_320px]' : 'grid-cols-1')}>
                         <section className="space-y-4 min-w-0">
                             {!showSidebar ? (

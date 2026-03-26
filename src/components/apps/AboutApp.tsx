@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
+import { Github, Linkedin, Mail, MessageCircle, Phone, Share2, Twitter } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { OneUiBadge, OneUiCard, OneUiPrimaryButton, OneUiSection, OneUiSecondaryButton } from '../oneui/OneUiPrimitives'
 
@@ -68,25 +68,32 @@ export default function AboutApp({ isMobile }: AboutAppProps) {
 function AboutMobileApp() {
     return (
         <div className="space-y-5 px-5 pb-8 pt-5">
-            <OneUiCard className="space-y-5">
-                <div className="flex flex-col items-center text-center">
-                    <div className="relative h-24 w-24 overflow-hidden rounded-full border-4 border-white/55 shadow-[0_12px_30px_rgba(0,0,0,0.18)]">
-                        <Image src="/shreyansh-sahu.jpg" alt="Profile" fill className="object-cover" />
-                    </div>
-                    <div className="min-w-0 pt-4">
-                        <div className="text-2xl font-semibold tracking-[-0.05em] text-[var(--oneui-text)]">Shreyansh Sahu</div>
-                        <div className="mt-1 text-sm text-[var(--oneui-text-soft)]">Founder, builder, student ambassador</div>
-                        <div className="mt-3 flex flex-wrap gap-2">
-                            <OneUiBadge>Gurugram</OneUiBadge>
-                            <OneUiBadge>Healthcare + Tech</OneUiBadge>
+            <OneUiCard className="space-y-5 overflow-hidden">
+                <div className="rounded-[2rem] bg-[linear-gradient(180deg,rgba(89,152,255,0.18),rgba(255,255,255,0.08))] p-5">
+                    <div className="flex flex-col items-center text-center">
+                        <div className="relative h-24 w-24 overflow-hidden rounded-full border-4 border-white/55 shadow-[0_12px_30px_rgba(0,0,0,0.18)]">
+                            <Image src="/shreyansh-sahu.jpg" alt="Profile" fill className="object-cover" />
                         </div>
+                        <div className="min-w-0 pt-4">
+                            <div className="text-2xl font-semibold tracking-[-0.05em] text-[var(--oneui-text)]">Shreyansh Sahu</div>
+                            <div className="mt-1 text-sm text-[var(--oneui-text-soft)]">Founder, builder, student ambassador</div>
+                            <div className="mt-3 flex flex-wrap justify-center gap-2">
+                                <OneUiBadge>Gurugram</OneUiBadge>
+                                <OneUiBadge>Healthcare + Tech</OneUiBadge>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mt-5 grid grid-cols-3 gap-3">
+                        <ContactQuickAction icon={Phone} label="Call" onClick={() => window.open('tel:+919318321133', '_self')} />
+                        <ContactQuickAction icon={MessageCircle} label="Text" onClick={() => window.open('mailto:mail@shreyanshsahu.com', '_blank')} />
+                        <ContactQuickAction icon={Share2} label="Share" onClick={() => window.open('https://shreyanshsahu.com', '_blank')} />
                     </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3">
                     <OneUiPrimaryButton onClick={() => window.open('mailto:mail@shreyanshsahu.com', '_blank')}>Message</OneUiPrimaryButton>
-                    <OneUiSecondaryButton onClick={() => window.open('https://linkedin.com/in/shreyanshsahu', '_blank')}>Call</OneUiSecondaryButton>
-                    <OneUiSecondaryButton onClick={() => window.open('https://github.com/shreyansh-os', '_blank')}>Share</OneUiSecondaryButton>
+                    <OneUiSecondaryButton onClick={() => window.open('tel:+919318321133', '_self')}>Call</OneUiSecondaryButton>
+                    <OneUiSecondaryButton onClick={() => window.open('https://linkedin.com/in/shreyanshsahu', '_blank')}>Profile</OneUiSecondaryButton>
                 </div>
             </OneUiCard>
 
@@ -94,20 +101,21 @@ function AboutMobileApp() {
                 <OneUiCard className="divide-y divide-[var(--oneui-border)] py-0">
                     <ContactRow title="Mobile" value="+91 93183 21133" />
                     <ContactRow title="Email" value="mail@shreyanshsahu.com" />
-                    <ContactRow title="Web" value="shreyanshsahu.com" />
+                    <ContactRow title="Website" value="shreyanshsahu.com" />
+                    <ContactRow title="Location" value="Gurugram, India" />
                 </OneUiCard>
             </OneUiSection>
 
-            <OneUiSection title="Info" eyebrow="Profile">
-                <OneUiCard className="space-y-4">
+            <OneUiSection title="Profile" eyebrow="Details">
+                <OneUiCard className="divide-y divide-[var(--oneui-border)] py-0">
                     <ContactRow title="Company" value="Aarogyan Foundation" />
                     <ContactRow title="Role" value="Chairperson & Co-founder" />
+                    <ContactRow title="Programs" value="IBM SkillsBuild, mentorship, digital products" />
                     <ContactRow title="Focus" value="Healthcare, software, community impact" />
-                    <ContactRow title="Programs" value="IBM SkillsBuild, digital products, mentorship" />
                 </OneUiCard>
             </OneUiSection>
 
-            <OneUiSection title="Accounts" eyebrow="Social">
+            <OneUiSection title="Linked accounts" eyebrow="Social">
                 <OneUiCard className="divide-y divide-[var(--oneui-border)] py-0">
                     <SocialRow icon={Github} label="GitHub" href="https://github.com/shreyansh-os" />
                     <SocialRow icon={Linkedin} label="LinkedIn" href="https://linkedin.com/in/shreyanshsahu" />
@@ -115,7 +123,29 @@ function AboutMobileApp() {
                     <SocialRow icon={Mail} label="Email" href="mailto:mail@shreyanshsahu.com" />
                 </OneUiCard>
             </OneUiSection>
+
+            <OneUiSection title="Notes" eyebrow="Highlights">
+                <OneUiCard className="space-y-3">
+                    <ContactRow title="About" value="Young entrepreneur building at the intersection of healthcare and technology." />
+                    <ContactRow title="Mentorship" value="Guided 300+ students on profiles, technology, and design careers." />
+                    <ContactRow title="Creative work" value="Founder, actor, and director at KinderLand Productions." />
+                </OneUiCard>
+            </OneUiSection>
         </div>
+    )
+}
+
+function ContactQuickAction({ icon: Icon, label, onClick }: { icon: LucideIcon; label: string; onClick: () => void }) {
+    return (
+        <button
+            onClick={onClick}
+            className="rounded-[1.4rem] bg-[var(--oneui-surface)] px-3 py-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.55)]"
+        >
+            <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--oneui-accent-soft)] text-[var(--oneui-accent)]">
+                <Icon size={18} />
+            </div>
+            <div className="text-xs font-medium text-[var(--oneui-text)]">{label}</div>
+        </button>
     )
 }
 
@@ -162,7 +192,7 @@ function ContactRow({ title, value }: { title: string, value: string }) {
     return (
         <div className="oneui-row">
             <div className="oneui-row-title">{title}</div>
-            <div className="text-sm text-[var(--oneui-text-soft)]">{value}</div>
+            <div className="text-sm text-[var(--oneui-text-soft)] text-right">{value}</div>
         </div>
     )
 }

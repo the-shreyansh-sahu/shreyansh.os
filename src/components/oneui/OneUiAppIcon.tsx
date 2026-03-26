@@ -63,11 +63,11 @@ export function OneUiAppIcon({ app, label, icon: Icon }: OneUiAppIconProps) {
             } : {}}
             whileTap={!isJiggling ? { scale: 0.92 } : undefined}
         >
-            <div className="flex h-[68px] w-[68px] items-center justify-center">
+            <div className="flex h-[66px] w-[66px] items-center justify-center">
                 {typeof Icon === 'string' ? (
                     <div
                         className={cn(
-                            'h-full w-full overflow-hidden rounded-[1.55rem] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.28)]',
+                            'h-full w-full overflow-hidden rounded-[1.45rem] border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_10px_20px_rgba(10,16,28,0.18)]',
                             isPhotoIcon ? 'p-0' : 'p-1'
                         )}
                         style={{ background: manifest.tileBg }}
@@ -78,7 +78,7 @@ export function OneUiAppIcon({ app, label, icon: Icon }: OneUiAppIconProps) {
                             width={68}
                             height={68}
                             className={cn(
-                                'h-full w-full rounded-[1.55rem]',
+                                'h-full w-full rounded-[1.45rem]',
                                 isPhotoIcon ? 'object-cover' : 'object-contain p-2 [filter:brightness(0)_invert(1)]'
                             )}
                         />
@@ -89,7 +89,7 @@ export function OneUiAppIcon({ app, label, icon: Icon }: OneUiAppIconProps) {
                     </div>
                 )}
             </div>
-            <span className="max-w-[76px] line-clamp-2 text-center text-[11px] font-medium leading-[1.18] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]">
+            <span className="max-w-[78px] line-clamp-2 text-center text-[11px] font-medium leading-[1.2] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]">
                 {label}
             </span>
         </motion.button>

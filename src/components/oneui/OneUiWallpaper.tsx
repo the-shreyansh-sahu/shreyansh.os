@@ -20,8 +20,7 @@ export function OneUiWallpaper() {
                     />
                 </div>
             </div>
-            <div className="oneui-wallpaper-orb oneui-wallpaper-orb-a" />
-            <div className="oneui-wallpaper-orb oneui-wallpaper-orb-b" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(8,12,18,0.02)_18%,rgba(8,12,18,0.18)_100%)]" />
             <div className="oneui-wallpaper-glow" />
         </div>
     )

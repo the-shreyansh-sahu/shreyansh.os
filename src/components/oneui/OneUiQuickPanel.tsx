@@ -1,31 +1,46 @@
 'use client'
 
+import { useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Bluetooth, Moon, Smartphone, Volume2, Wifi, Flashlight, RotateCcw } from 'lucide-react'
+import { Bluetooth, Flashlight, Moon, RotateCcw, Volume2, Wifi } from 'lucide-react'
 import { useTheme } from '../../hooks/useTheme'
 import { useOneUiStore } from '../../store/oneUiStore'
-import { OneUiPrimaryButton, OneUiSecondaryButton } from './OneUiPrimitives'
+import { cn } from '../../lib/cn'
 
-function QuickToggle({
+function formatTime(date: Date) {
+    return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+}
+
+function formatDate(date: Date) {
+    return date.toLocaleDateString([], { weekday: 'short', month: 'long', day: 'numeric' })
+}
+
+function QuickTile({
     label,
-    active,
     icon: Icon,
+    active,
+    compact,
     onClick,
 }: {
     label: string
-    active: boolean
     icon: typeof Wifi
+    active?: boolean
+    compact?: boolean
     onClick?: () => void
 }) {
     return (
         <button
             onClick={onClick}
-            className={`oneui-quick-toggle ${active ? 'oneui-quick-toggle-active' : ''}`}
+            className={cn(
+                'oneui-quick-toggle',
+                active ? 'oneui-quick-toggle-active' : '',
+                compact ? 'min-h-[80px] px-4 py-4' : 'min-h-[96px] px-5 py-5'
+            )}
         >
             <span className="oneui-quick-toggle-icon">
-                <Icon size={18} />
+                <Icon size={compact ? 17 : 19} />
             </span>
-            <span>{label}</span>
+            <span className={cn('font-semibold', compact ? 'text-[13px]' : 'text-[15px]')}>{label}</span>
         </button>
     )
 }
@@ -33,9 +48,28 @@ function QuickToggle({
 export function OneUiQuickPanel() {
     const quickPanelOpen = useOneUiStore((s) => s.quickPanelOpen)
     const setQuickPanelOpen = useOneUiStore((s) => s.setQuickPanelOpen)
-    const navMode = useOneUiStore((s) => s.navMode)
-    const setNavMode = useOneUiStore((s) => s.setNavMode)
     const { theme, toggleThemeWithAnimation } = useTheme()
+    const panelTouchStartRef = useRef<{ x: number; y: number } | null>(null)
+    const now = new Date()
+
+    const handlePanelSwipe = (offsetX: number, offsetY: number) => {
+        if (Math.abs(offsetY) > Math.abs(offsetX) && offsetY < -90) {
+            setQuickPanelOpen(false)
+        }
+    }
+
+    const handlePanelTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+        const touch = event.touches[0]
+        panelTouchStartRef.current = { x: touch.clientX, y: touch.clientY }
+    }
+
+    const handlePanelTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+        if (!panelTouchStartRef.current) return
+
+        const touch = event.changedTouches[0]
+        handlePanelSwipe(touch.clientX - panelTouchStartRef.current.x, touch.clientY - panelTouchStartRef.current.y)
+        panelTouchStartRef.current = null
+    }
 
     return (
         <AnimatePresence>
@@ -45,89 +79,70 @@ export function OneUiQuickPanel() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 z-[280] bg-black/20"
+                        className="absolute inset-0 z-[280] bg-black/28"
                         onClick={() => setQuickPanelOpen(false)}
                     />
                     <motion.div
-                        initial={{ y: '-100%', opacity: 0.5 }}
+                        initial={{ y: '-100%', opacity: 0.75 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: '-100%', opacity: 0 }}
-                        transition={{ type: 'spring', damping: 24, stiffness: 220 }}
-                        className="absolute inset-x-0 top-0 z-[290] rounded-b-[2.3rem] bg-[var(--oneui-panel)] px-5 pb-6 pt-14 shadow-[0_24px_54px_rgba(0,0,0,0.2)]"
+                        transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+                        onTouchStart={handlePanelTouchStart}
+                        onTouchEnd={handlePanelTouchEnd}
+                        className="absolute inset-x-0 top-0 z-[290] rounded-b-[2.6rem] border-b border-white/12 bg-[var(--oneui-panel)] px-5 pb-8 pt-14 shadow-[0_28px_60px_rgba(0,0,0,0.22)] backdrop-blur-[32px]"
                     >
-                        <div className="mb-4 flex items-center justify-between">
+                        <div className="mb-6 flex items-start justify-between">
                             <div>
-                                <div className="oneui-eyebrow">Quick Panel</div>
-                                <div className="text-[2.3rem] font-semibold tracking-[-0.07em] leading-none text-[var(--oneui-text)]">
-                                    12:48
+                                <div className="text-[3rem] font-semibold leading-none tracking-[-0.08em] text-[var(--oneui-text)]">
+                                    {formatTime(now)}
                                 </div>
-                                <div className="mt-1 text-sm text-[var(--oneui-text-soft)]">Thu, 26 March</div>
+                                <div className="mt-2 text-sm font-medium text-[var(--oneui-text-soft)]">{formatDate(now)}</div>
                             </div>
-                            <OneUiSecondaryButton onClick={() => setQuickPanelOpen(false)}>
-                                Close
-                            </OneUiSecondaryButton>
+                            <button
+                                onClick={() => setQuickPanelOpen(false)}
+                                className="rounded-full bg-[var(--oneui-surface-2)] px-4 py-2 text-[13px] font-semibold text-[var(--oneui-text)]"
+                            >
+                                Done
+                            </button>
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
-                            <QuickToggle label="Wi-Fi" active icon={Wifi} />
-                            <QuickToggle label="Bluetooth" active={false} icon={Bluetooth} />
-                            <QuickToggle label="Sound" active icon={Volume2} />
-                            <QuickToggle
-                                label={theme === 'dark' ? 'Dark mode' : 'Light mode'}
-                                active={theme === 'dark'}
-                                icon={Moon}
-                                onClick={toggleThemeWithAnimation}
-                            />
-                            <QuickToggle label="Auto rotate" active={false} icon={RotateCcw} />
-                            <QuickToggle label="Flashlight" active={false} icon={Flashlight} />
+                            <QuickTile label="Wi-Fi" icon={Wifi} active />
+                            <QuickTile label="Sound" icon={Volume2} active />
+                        </div>
+                        <div className="mt-3 grid grid-cols-4 gap-3">
+                            <QuickTile label="Bluetooth" icon={Bluetooth} compact />
+                            <QuickTile label={theme === 'dark' ? 'Dark mode' : 'Light mode'} icon={Moon} active={theme === 'dark'} compact onClick={toggleThemeWithAnimation} />
+                            <QuickTile label="Rotate" icon={RotateCcw} compact />
+                            <QuickTile label="Torch" icon={Flashlight} compact />
                         </div>
 
-                        <div className="mt-5 oneui-card space-y-4">
-                            <div className="flex items-center justify-between text-sm">
-                                <span className="text-[var(--oneui-text-soft)]">Brightness</span>
-                                <span className="font-medium text-[var(--oneui-text)]">82%</span>
+                        <div className="mt-4 rounded-[2rem] bg-[var(--oneui-surface)] px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]">
+                            <div className="mb-3 flex items-center justify-between">
+                                <span className="text-sm font-medium text-[var(--oneui-text-soft)]">Brightness</span>
+                                <span className="text-sm font-semibold text-[var(--oneui-text)]">82%</span>
                             </div>
                             <div className="oneui-slider-track">
                                 <div className="oneui-slider-fill w-[82%]" />
                             </div>
                         </div>
 
-                        <div className="mt-4 oneui-card space-y-3">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <div className="text-base font-semibold text-[var(--oneui-text)]">Navigation Mode</div>
-                                    <div className="text-sm text-[var(--oneui-text-soft)]">Demo both Samsung navigation systems</div>
+                        <div className="mt-5">
+                            <div className="px-1 text-[13px] font-semibold text-[var(--oneui-text-soft)]">Notifications</div>
+                            <div className="mt-3 space-y-3">
+                                <div className="oneui-card">
+                                    <div className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--oneui-text-faint)]">System UI</div>
+                                    <div className="mt-2 text-[15px] font-semibold text-[var(--oneui-text)]">Home screen is using Samsung analog apps</div>
+                                    <div className="mt-2 text-sm leading-6 text-[var(--oneui-text-soft)]">
+                                        Contacts, My Files, Device Care, Notes, Phone, Calendar, and Developer options now anchor the mobile shell.
+                                    </div>
                                 </div>
-                                <Smartphone size={18} className="text-[var(--oneui-accent)]" />
-                            </div>
-                            <div className="grid grid-cols-2 gap-2">
-                                <OneUiPrimaryButton
-                                    className={navMode === 'gesture' ? '' : 'opacity-80'}
-                                    onClick={() => setNavMode('gesture')}
-                                >
-                                    Gesture
-                                </OneUiPrimaryButton>
-                                <OneUiSecondaryButton
-                                    className={navMode === 'three-button' ? 'ring-1 ring-[var(--oneui-border-strong)]' : ''}
-                                    onClick={() => setNavMode('three-button')}
-                                >
-                                    3-button
-                                </OneUiSecondaryButton>
-                            </div>
-                        </div>
-
-                        <div className="mt-4 space-y-3">
-                            <div className="px-1 text-sm font-semibold text-[var(--oneui-text)]">Notifications</div>
-                            <div className="oneui-card">
-                                <div className="text-[13px] font-medium text-[var(--oneui-text)]">Portfolio system</div>
-                                <div className="mt-1 text-sm leading-6 text-[var(--oneui-text-soft)]">
-                                    Contact, projects, notes, and developer tools are available from the launcher.
-                                </div>
-                            </div>
-                            <div className="oneui-card">
-                                <div className="text-[13px] font-medium text-[var(--oneui-text)]">Fidelity mode</div>
-                                <div className="mt-1 text-sm leading-6 text-[var(--oneui-text-soft)]">
-                                    This mobile branch is now focused on Samsung-style structure and visual density.
+                                <div className="oneui-card">
+                                    <div className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--oneui-text-faint)]">Portfolio</div>
+                                    <div className="mt-2 text-[15px] font-semibold text-[var(--oneui-text)]">Projects and skills remain intact inside apps</div>
+                                    <div className="mt-2 text-sm leading-6 text-[var(--oneui-text-soft)]">
+                                        The shell is now Samsung-first while app content still exposes your actual portfolio work.
+                                    </div>
                                 </div>
                             </div>
                         </div>

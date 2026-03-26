@@ -97,12 +97,16 @@
   --oneui-text: #10131a;
   --oneui-text-soft: #5d6472;
   --oneui-text-faint: #8b92a0;
+  --oneui-text-hero: #ffffff;
   --oneui-accent: #0f6fff;
   --oneui-accent-soft: rgba(15, 111, 255, 0.12);
   --oneui-success: #14a073;
   --oneui-success-soft: rgba(20, 160, 115, 0.12);
   --oneui-amber: #f0a13c;
   --oneui-amber-soft: rgba(240, 161, 60, 0.12);
+  --oneui-widget: rgba(255, 255, 255, 0.72);
+  --oneui-widget-strong: rgba(255, 255, 255, 0.62);
+  --oneui-search-bg: rgba(248, 249, 252, 0.84);
 }
 
 /* ── LIGHT THEME ────────────────────────────────────────────────────────── */
@@ -178,30 +182,38 @@
   --oneui-text: #10131a;
   --oneui-text-soft: #5d6472;
   --oneui-text-faint: #8b92a0;
+  --oneui-text-hero: #ffffff;
   --oneui-accent: #0f6fff;
   --oneui-accent-soft: rgba(15, 111, 255, 0.12);
   --oneui-success: #14a073;
   --oneui-success-soft: rgba(20, 160, 115, 0.12);
   --oneui-amber: #f0a13c;
   --oneui-amber-soft: rgba(240, 161, 60, 0.12);
+  --oneui-widget: rgba(255, 255, 255, 0.72);
+  --oneui-widget-strong: rgba(255, 255, 255, 0.62);
+  --oneui-search-bg: rgba(248, 249, 252, 0.84);
 }
 
 :root[data-theme="dark"] {
-  --oneui-bg: #111319;
-  --oneui-panel: rgba(22, 25, 33, 0.94);
-  --oneui-surface: rgba(30, 34, 43, 0.92);
-  --oneui-surface-2: #1c2029;
+  --oneui-bg: #151922;
+  --oneui-panel: rgba(25, 30, 40, 0.94);
+  --oneui-surface: rgba(31, 37, 49, 0.94);
+  --oneui-surface-2: #222938;
   --oneui-border: rgba(255, 255, 255, 0.07);
-  --oneui-border-strong: rgba(255, 255, 255, 0.16);
+  --oneui-border-strong: rgba(255, 255, 255, 0.14);
   --oneui-text: #f4f7fb;
-  --oneui-text-soft: #b0b7c4;
-  --oneui-text-faint: #7b8392;
-  --oneui-accent: #7db4ff;
-  --oneui-accent-soft: rgba(125, 180, 255, 0.14);
-  --oneui-success: #45d39b;
-  --oneui-success-soft: rgba(69, 211, 155, 0.14);
-  --oneui-amber: #f3b95a;
-  --oneui-amber-soft: rgba(243, 185, 90, 0.14);
+  --oneui-text-soft: #b2bac8;
+  --oneui-text-faint: #7f899b;
+  --oneui-text-hero: #ffffff;
+  --oneui-accent: #7fb3ff;
+  --oneui-accent-soft: rgba(127, 179, 255, 0.16);
+  --oneui-success: #47d59f;
+  --oneui-success-soft: rgba(71, 213, 159, 0.16);
+  --oneui-amber: #f4bb63;
+  --oneui-amber-soft: rgba(244, 187, 99, 0.16);
+  --oneui-widget: rgba(29, 35, 46, 0.82);
+  --oneui-widget-strong: rgba(38, 46, 61, 0.86);
+  --oneui-search-bg: rgba(31, 38, 51, 0.9);
 }
 
 @layer components {
@@ -224,19 +236,22 @@
 
   /* One UI bottom sheet */
   .oneui-sheet {
-    background: var(--oneui-surface);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid var(--oneui-card-border);
-    border-radius: 20px 20px 0 0;
+    background: var(--oneui-panel);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-top: 1px solid var(--oneui-border);
+    border-radius: 28px 28px 0 0;
+    box-shadow: 0 -18px 36px rgba(15, 19, 26, 0.14);
   }
 
   .oneui-card {
     background: var(--oneui-surface);
     border: 1px solid var(--oneui-border);
-    border-radius: 26px;
+    border-radius: 28px;
     padding: 18px;
-    box-shadow: 0 12px 26px rgba(15, 19, 26, 0.05);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 12px 30px rgba(15, 19, 26, 0.06);
   }
 
   .oneui-row {
@@ -249,9 +264,9 @@
 
   .oneui-section-title {
     color: var(--oneui-text);
-    font-size: 1.25rem;
+    font-size: 1.42rem;
     font-weight: 700;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
   }
 
   .oneui-eyebrow {
@@ -283,17 +298,18 @@
     border-radius: 999px;
     background: var(--oneui-accent-soft);
     color: var(--oneui-accent);
-    padding: 8px 12px;
+    padding: 9px 12px;
     font-size: 0.78rem;
     font-weight: 700;
     line-height: 1;
   }
 
   .oneui-metric {
-    border-radius: 22px;
+    border-radius: 24px;
     background: var(--oneui-surface);
     border: 1px solid var(--oneui-border);
     padding: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
   }
 
   .oneui-metric-blue {
@@ -346,16 +362,18 @@
   .oneui-button-secondary {
     background: var(--oneui-surface-2);
     color: var(--oneui-text);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .oneui-input {
     width: 100%;
-    border-radius: 20px;
+    border-radius: 22px;
     border: 1px solid var(--oneui-border);
     background: var(--oneui-surface);
-    padding: 14px 16px;
+    padding: 15px 18px;
     color: var(--oneui-text);
     outline: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56);
   }
 
   .oneui-input::placeholder {
@@ -369,38 +387,41 @@
 
   .oneui-app-tile {
     display: flex;
-    height: 68px;
-    width: 68px;
+    height: 66px;
+    width: 66px;
     align-items: center;
     justify-content: center;
-    border-radius: 1.55rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1.45rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.28),
-      0 8px 18px rgba(16, 24, 40, 0.18);
+      inset 0 1px 0 rgba(255, 255, 255, 0.26),
+      0 10px 22px rgba(16, 24, 40, 0.18);
   }
 
   .oneui-quick-toggle {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 12px;
-    border-radius: 22px;
+    border-radius: 24px;
     background: var(--oneui-surface);
     border: 1px solid var(--oneui-border);
     color: var(--oneui-text);
-    padding: 14px 16px;
+    padding: 16px;
     font-weight: 600;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
   }
 
   .oneui-quick-toggle-active {
-    background: linear-gradient(180deg, var(--oneui-accent-soft), var(--oneui-surface));
-    border-color: transparent;
+    background: linear-gradient(180deg, rgba(91, 154, 255, 0.2), var(--oneui-surface));
+    border-color: rgba(91, 154, 255, 0.16);
   }
 
   .oneui-quick-toggle-icon {
     display: flex;
-    height: 34px;
-    width: 34px;
+    height: 38px;
+    width: 38px;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
@@ -412,6 +433,7 @@
     border-radius: 999px;
     background: var(--oneui-surface-2);
     overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(17, 24, 39, 0.08);
   }
 
   .oneui-slider-fill {
@@ -428,19 +450,22 @@
 
   .oneui-recents-card {
     width: 100%;
-    border-radius: 26px;
+    border-radius: 30px;
     background: var(--oneui-surface);
     border: 1px solid var(--oneui-border);
     padding: 18px;
     text-align: left;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 12px 30px rgba(15, 19, 26, 0.06);
   }
 
   .oneui-gesture-pill {
     height: 5px;
-    width: 128px;
+    width: 132px;
     border-radius: 999px;
-    background: white;
-    opacity: 0.92;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 
   .oneui-nav-hint {
@@ -451,12 +476,13 @@
 
   .oneui-nav-button {
     display: flex;
-    height: 38px;
-    width: 38px;
+    height: 40px;
+    width: 40px;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
     background: var(--oneui-surface-2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -504,40 +530,18 @@ canvas,
 }
 
 .oneui-wallpaper {
-  background: #7789a8;
+  background: #8ea1be;
 }
 
 :root[data-theme="dark"] .oneui-wallpaper {
-  background: #1c2130;
-}
-
-.oneui-wallpaper-orb {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(8px);
-}
-
-.oneui-wallpaper-orb-a {
-  right: -22%;
-  top: 10%;
-  height: 340px;
-  width: 340px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.05) 68%, transparent 74%);
-}
-
-.oneui-wallpaper-orb-b {
-  left: -20%;
-  bottom: 8%;
-  height: 380px;
-  width: 380px;
-  background: radial-gradient(circle, rgba(210, 227, 255, 0.42), rgba(210, 227, 255, 0.06) 68%, transparent 72%);
+  background: #7087ab;
 }
 
 .oneui-wallpaper-glow {
   position: absolute;
   inset: auto 0 0 0;
-  height: 40%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(9, 10, 16, 0.2) 44%, rgba(9, 10, 16, 0.46));
+  height: 44%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(9, 10, 16, 0.12) 42%, rgba(9, 10, 16, 0.34));
 }
 
 /* Boot cursor blink */
