@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
         config.externals = [...(config.externals || []), { canvas: 'canvas' }]
         return config
     },
+    allowedDevOrigins: ['test.shreyanshsahu.com'],
 };
 
 export default nextConfig;
