@@ -21,6 +21,7 @@ export function OneUiAppIcon({ app, label, icon: Icon }: OneUiAppIconProps) {
     const setJiggling = useOneUiStore((s) => s.setJiggling)
     const timerRef = useRef<NodeJS.Timeout | null>(null)
     const isPhotoIcon = typeof Icon === 'string' && Icon === '/shreyansh-sahu.jpg'
+    const isSamsungIcon = typeof Icon === 'string' && (Icon.startsWith('/samsung') || Icon === '/terminal.png')
     const manifest = ONE_UI_MANIFEST[app]
 
     const handlePointerDown = () => {
@@ -67,10 +68,12 @@ export function OneUiAppIcon({ app, label, icon: Icon }: OneUiAppIconProps) {
                 {typeof Icon === 'string' ? (
                     <div
                         className={cn(
-                            'h-full w-full overflow-hidden rounded-[1.45rem] border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_10px_20px_rgba(10,16,28,0.18)]',
-                            isPhotoIcon ? 'p-0' : 'p-1'
+                            'h-full w-full overflow-hidden',
+                            isSamsungIcon ? 'oneui-squircle-mask' : 'rounded-[1.45rem]',
+                            !isSamsungIcon && 'border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_10px_20px_rgba(10,16,28,0.18)]',
+                            (isPhotoIcon || isSamsungIcon) ? 'p-0' : 'p-1'
                         )}
-                        style={{ background: manifest.tileBg }}
+                        style={{ background: isSamsungIcon ? 'transparent' : manifest.tileBg }}
                     >
                         <Image
                             src={Icon}
@@ -78,8 +81,9 @@ export function OneUiAppIcon({ app, label, icon: Icon }: OneUiAppIconProps) {
                             width={68}
                             height={68}
                             className={cn(
-                                'h-full w-full rounded-[1.45rem]',
-                                isPhotoIcon ? 'object-cover' : 'object-contain p-2 [filter:brightness(0)_invert(1)]'
+                                'h-full w-full',
+                                !isSamsungIcon && 'rounded-[1.45rem]',
+                                isPhotoIcon || isSamsungIcon ? 'object-cover' : 'object-contain p-2 [filter:brightness(0)_invert(1)]'
                             )}
                         />
                     </div>

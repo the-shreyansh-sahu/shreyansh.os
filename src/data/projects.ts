@@ -12,7 +12,7 @@ export const projects: Project[] = [
         projectType: 'Healthcare',
         //link: 'https://godialysis.in/',
     },*/
-    /*{
+    {
         id: 'furry-affair',
         title: 'Furry Affair Pet Care',
         description: 'Designed and developed the Furry Affair Pet Care website while also delivering supporting graphic design work for the brand.',
@@ -21,8 +21,8 @@ export const projects: Project[] = [
         github: '#',
         year: '2023',
         projectType: 'Pet Care',
-        //link: 'https://furryaffair.in/',
-    },*/
+        link: 'https://furryaffair.in/',
+    },
     {
         id: 'healthy-being-digital',
         title: 'Healthy Being bioPhysioTherapy',
@@ -55,7 +55,7 @@ export const projects: Project[] = [
         year: '2023',
         projectType: 'Media',
     },*/
-    /*{
+    {
         id: 'bharatmun',
         title: 'BharatMUN',
         description: 'Led IT operations and digital infrastructure for BharatMUN, supporting the technical execution of the conference.',
@@ -64,5 +64,5 @@ export const projects: Project[] = [
         github: '#',
         year: '2025',
         projectType: 'Events',
-    },*/
+    },
 ]

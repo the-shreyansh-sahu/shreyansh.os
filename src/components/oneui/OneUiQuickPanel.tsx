@@ -134,7 +134,7 @@ export function OneUiQuickPanel() {
                                     <div className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--oneui-text-faint)]">System UI</div>
                                     <div className="mt-2 text-[15px] font-semibold text-[var(--oneui-text)]">Home screen is using Samsung analog apps</div>
                                     <div className="mt-2 text-sm leading-6 text-[var(--oneui-text-soft)]">
-                                        Contacts, My Files, Device Care, Notes, Phone, Calendar, and Developer options now anchor the mobile shell.
+                                        Contacts, My Files, Device Care, Notes, Phone, and Developer options now anchor the mobile shell.
                                     </div>
                                 </div>
                                 <div className="oneui-card">
