@@ -29,7 +29,7 @@ export default function AboutApp({ isMobile }: AboutAppProps) {
                     <p className="text-lg font-medium opacity-90">Tech Entrepreneur & Student Ambassador</p>
                     <div className="flex flex-wrap justify-center md:justify-start gap-3">
                         <SocialButton icon={Github} href="https://github.com/shreyansh-os" />
-                        <SocialButton icon={Linkedin} href="https://linkedin.com/in/shreyanshsahu" />
+                        <SocialButton icon={Linkedin} href="https://linkedin.com/in/the-shreyansh-sahu" />
                         <SocialButton icon={Twitter} href="https://twitter.com/shreyansh_sahu" />
                         <SocialButton icon={Mail} href="mailto:shreyansh@example.com" />
                     </div>
