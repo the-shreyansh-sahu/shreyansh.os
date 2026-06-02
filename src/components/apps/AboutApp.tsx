@@ -30,8 +30,8 @@ export default function AboutApp({ isMobile }: AboutAppProps) {
                     <div className="flex flex-wrap justify-center md:justify-start gap-3">
                         <SocialButton icon={Github} href="https://github.com/shreyansh-os" />
                         <SocialButton icon={Linkedin} href="https://linkedin.com/in/the-shreyansh-sahu" />
-                        <SocialButton icon={Twitter} href="https://twitter.com/shreyansh_sahu" />
-                        <SocialButton icon={Mail} href="mailto:shreyansh@example.com" />
+                        <SocialButton icon={Twitter} href="https://twitter.com/TheBrownTechGuy" />
+                        <SocialButton icon={Mail} href="mailto:mail@shreyanshsahu.com" />
                     </div>
                 </div>
             </div>
