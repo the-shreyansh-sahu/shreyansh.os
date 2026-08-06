@@ -28,7 +28,7 @@ export default function AboutApp({ isMobile }: AboutAppProps) {
                     <h1 className="text-3xl font-bold tracking-tight text-[var(--accent-primary)]">Shreyansh Sahu</h1>
                     <p className="text-lg font-medium opacity-90">Tech Entrepreneur & Student Ambassador</p>
                     <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                        <SocialButton icon={Github} href="https://github.com/shreyansh-os" />
+                        <SocialButton icon={Github} href="https://github.com/the-shreyansh-sahu" />
                         <SocialButton icon={Linkedin} href="https://linkedin.com/in/the-shreyansh-sahu" />
                         <SocialButton icon={Twitter} href="https://twitter.com/TheBrownTechGuy" />
                         <SocialButton icon={Mail} href="mailto:mail@shreyanshsahu.com" />
@@ -117,9 +117,9 @@ function AboutMobileApp() {
 
             <OneUiSection title="Linked accounts" eyebrow="Social">
                 <OneUiCard className="divide-y divide-[var(--oneui-border)] py-0">
-                    <SocialRow icon={Github} label="GitHub" href="https://github.com/shreyansh-os" />
-                    <SocialRow icon={Linkedin} label="LinkedIn" href="https://linkedin.com/in/shreyanshsahu" />
-                    <SocialRow icon={Twitter} label="Twitter" href="https://twitter.com/shreyansh_sahu" />
+                    <SocialRow icon={Github} label="GitHub" href="https://github.com/the-shreyansh-sahu" />
+                    <SocialRow icon={Linkedin} label="LinkedIn" href="https://linkedin.com/in/the-shreyansh-sahu" />
+                    <SocialRow icon={Twitter} label="Twitter" href="https://twitter.com/TheBrownTechGuy" />
                     <SocialRow icon={Mail} label="Email" href="mailto:mail@shreyanshsahu.com" />
                 </OneUiCard>
             </OneUiSection>

@@ -39,61 +39,59 @@ export function OneUiAppIcon({ app, label, icon: Icon }: OneUiAppIconProps) {
     }
 
     const handleClick = () => {
-        if (isJiggling) {
-            return
-        }
-
+        if (isJiggling) return
         openApp(app)
     }
 
     return (
         <motion.button
-            className="flex w-full flex-col items-center gap-2"
+            className="flex w-full flex-col items-center gap-1.5"
             onPointerDown={handlePointerDown}
             onPointerUp={handlePointerUp}
             onPointerLeave={handlePointerUp}
             onClick={handleClick}
             animate={isJiggling ? {
-                rotate: [0, -2, 2, -2, 2, 0],
+                rotate: [0, -1.5, 1.5, -1.5, 1.5, 0],
+                y: [0, -1, 0, -1, 0],
                 transition: {
-                    duration: 0.4,
+                    duration: 0.35,
                     repeat: Infinity,
                     repeatType: 'loop',
                     ease: 'easeInOut',
                 },
             } : {}}
-            whileTap={!isJiggling ? { scale: 0.92 } : undefined}
+            whileTap={!isJiggling ? { scale: 0.88, filter: 'brightness(0.85)' } : undefined}
         >
-            <div className="flex h-[66px] w-[66px] items-center justify-center">
+            <div className="relative flex h-[56px] w-[56px] items-center justify-center">
                 {typeof Icon === 'string' ? (
                     <div
                         className={cn(
                             'h-full w-full overflow-hidden',
-                            isSamsungIcon ? 'oneui-squircle-mask' : 'rounded-[1.45rem]',
-                            !isSamsungIcon && 'border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_10px_20px_rgba(10,16,28,0.18)]',
-                            (isPhotoIcon || isSamsungIcon) ? 'p-0' : 'p-1'
+                            isSamsungIcon ? 'oneui-squircle-mask' : 'rounded-[14px]',
+                            !isSamsungIcon && 'shadow-[0_4px_12px_rgba(0,0,0,0.15)]',
+                            (isPhotoIcon || isSamsungIcon) ? 'p-0' : 'p-0.5'
                         )}
-                        style={{ background: isSamsungIcon ? 'transparent' : manifest.tileBg }}
+                        style={!isSamsungIcon ? { background: manifest.tileBg } : undefined}
                     >
                         <Image
                             src={Icon}
                             alt={label}
-                            width={68}
-                            height={68}
+                            width={56}
+                            height={56}
                             className={cn(
                                 'h-full w-full',
-                                !isSamsungIcon && 'rounded-[1.45rem]',
-                                isPhotoIcon || isSamsungIcon ? 'object-cover' : 'object-contain p-2 [filter:brightness(0)_invert(1)]'
+                                !isSamsungIcon && 'rounded-[13px]',
+                                isPhotoIcon || isSamsungIcon ? 'object-cover' : 'object-contain p-1.5 [filter:brightness(0)_invert(1)]'
                             )}
                         />
                     </div>
                 ) : (
                     <div className="oneui-app-tile" style={{ background: manifest.tileBg, color: manifest.tileFg }}>
-                        <Icon size={27} />
+                        <Icon size={24} />
                     </div>
                 )}
             </div>
-            <span className="max-w-[78px] line-clamp-2 text-center text-[11px] font-medium leading-[1.2] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]">
+            <span className="max-w-[68px] line-clamp-2 text-center text-[10px] font-medium leading-[1.2] text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
                 {label}
             </span>
         </motion.button>

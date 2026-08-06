@@ -100,38 +100,41 @@ export function OneUiHomeScreen() {
         >
             <OneUiWallpaper />
 
-            <div className="absolute inset-x-0 top-14 bottom-[7.25rem] px-5">
-                <div className="rounded-[2rem] bg-[var(--oneui-widget)]/88 p-5 shadow-[0_20px_40px_rgba(6,10,18,0.18)] backdrop-blur-[24px]">
-                    <div className="text-[13px] font-semibold text-[var(--oneui-text-soft)]">{formatDayLabel(now)}</div>
-                    <div className="mt-1 text-[3.35rem] font-semibold leading-none tracking-[-0.08em] text-[var(--oneui-text-hero)]">
+            <div className="absolute inset-x-0 top-10 bottom-[6.5rem] px-4">
+                {/* Clock + Now Brief widget */}
+                <div className="rounded-[1.6rem] bg-[var(--oneui-widget)]/90 p-4 shadow-[0_8px_32px_rgba(6,10,18,0.12)] backdrop-blur-[28px]">
+                    <div className="text-[12px] font-medium text-[var(--oneui-text-soft)]">{formatDayLabel(now)}</div>
+                    <div className="mt-0.5 text-[3.2rem] font-extralight leading-none tracking-[-0.02em] text-[var(--oneui-text-hero)]">
                         {formatClock(now)}
                     </div>
-                    <div className="mt-4 flex items-center justify-between rounded-[1.4rem] bg-[var(--oneui-widget-strong)] px-4 py-3">
+                    <div className="mt-3 flex items-center justify-between rounded-[1rem] bg-[var(--oneui-widget-strong)] px-3.5 py-2.5">
                         <div>
-                            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[var(--oneui-text-faint)]">Now brief</div>
-                            <div className="mt-1 text-sm font-medium text-[var(--oneui-text)]">Portfolio system tuned for One UI 7</div>
+                            <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--oneui-text-faint)]">Now brief</div>
+                            <div className="mt-0.5 text-[13px] font-medium text-[var(--oneui-text)]">Portfolio system tuned for One UI 7</div>
                         </div>
-                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/70 text-[var(--oneui-accent)]">
-                            <Sparkles size={18} />
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--oneui-accent)]/15 text-[var(--oneui-accent)]">
+                            <Sparkles size={16} />
                         </div>
                     </div>
                 </div>
 
-                <div className="mt-6 rounded-[1.75rem] bg-[var(--oneui-search-bg)]/96 px-4 py-3 shadow-[0_10px_24px_rgba(8,14,24,0.12)] backdrop-blur-xl">
-                    <div className="flex items-center gap-3 text-[var(--oneui-text-soft)]">
-                        <Search size={17} />
-                        <span className="text-sm font-medium">Finder search</span>
+                {/* Search bar — full pill */}
+                <div className="mt-4 rounded-full bg-[var(--oneui-search-bg)]/96 px-4 py-2.5 shadow-[0_4px_16px_rgba(8,14,24,0.08)] backdrop-blur-xl">
+                    <div className="flex items-center gap-2.5 text-[var(--oneui-text-soft)]">
+                        <Search size={16} />
+                        <span className="text-[13px] font-medium">Search</span>
                     </div>
                 </div>
 
-                <div className="mt-7 flex h-[360px] overflow-hidden">
+                {/* App grid */}
+                <div className="mt-5 flex h-[340px] overflow-hidden">
                     <motion.div
                         className="flex h-full w-full"
                         animate={{ x: `${homePage * -100}%` }}
                         transition={{ type: 'spring', stiffness: 320, damping: 34 }}
                     >
                         {HOME_PAGES.map((apps, index) => (
-                            <div key={index} className="grid min-w-full grid-cols-4 content-start gap-x-3 gap-y-7 px-1">
+                            <div key={index} className="grid min-w-full grid-cols-4 content-start gap-x-2 gap-y-6 px-1 pt-2">
                                 {apps.map((app) => {
                                     const item = ONE_UI_MANIFEST[app]
                                     return <OneUiAppIcon key={item.app} app={item.app} label={item.label} icon={item.icon} />
@@ -142,26 +145,29 @@ export function OneUiHomeScreen() {
                 </div>
             </div>
 
-            <div className="absolute inset-x-4 bottom-[6.75rem] rounded-[2rem] border border-white/20 bg-[var(--oneui-dock)] px-4 py-3 shadow-[0_18px_36px_rgba(6,10,18,0.18)] backdrop-blur-[28px]">
-                <div className="grid grid-cols-4 gap-3">
+            {/* Dock */}
+            <div className="absolute inset-x-3 bottom-[5.5rem] rounded-[1.4rem] bg-[var(--oneui-dock)]/90 px-3 py-2.5 shadow-[0_8px_28px_rgba(6,10,18,0.15)] backdrop-blur-[32px] border border-white/8">
+                <div className="grid grid-cols-4 gap-2">
                     {ONE_UI_DOCK_APPS.map((item) => (
                         <OneUiAppIcon key={item.app} app={item.app} label={item.label} icon={item.icon} />
                     ))}
                 </div>
             </div>
 
-            <div className="absolute bottom-[5.7rem] left-1/2 flex -translate-x-1/2 items-center gap-2">
+            {/* Page indicators */}
+            <div className="absolute bottom-[4.5rem] left-1/2 flex -translate-x-1/2 items-center gap-1.5">
                 {HOME_PAGES.map((_, index) => (
                     <span
                         key={index}
                         className={cn(
-                            'rounded-full transition-all',
-                            homePage === index ? 'h-1.5 w-5 bg-white' : 'h-1.5 w-1.5 bg-white/45'
+                            'rounded-full transition-all duration-300',
+                            homePage === index ? 'h-[6px] w-[6px] bg-white' : 'h-[5px] w-[5px] bg-white/40'
                         )}
                     />
                 ))}
             </div>
 
+            {/* App drawer */}
             <AnimatePresence>
                 {appDrawerOpen ? (
                     <>
@@ -169,30 +175,26 @@ export function OneUiHomeScreen() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="absolute inset-0 bg-black/20"
+                            className="absolute inset-0 bg-black/25"
                             onClick={() => setAppDrawerOpen(false)}
                         />
                         <motion.div
-                            initial={{ y: '100%', opacity: 0.7 }}
+                            initial={{ y: '100%', opacity: 0.8 }}
                             animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: '100%', opacity: 0.6 }}
-                            transition={{ type: 'spring', stiffness: 320, damping: 34 }}
+                            exit={{ y: '100%', opacity: 0.7 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 32 }}
                             onTouchStart={handleDrawerTouchStart}
                             onTouchEnd={handleDrawerTouchEnd}
-                            className="absolute inset-x-0 bottom-0 top-24 rounded-t-[2.5rem] border-t border-white/20 bg-[var(--oneui-panel)] px-5 pb-32 pt-5 shadow-[0_-20px_56px_rgba(0,0,0,0.28)] backdrop-blur-[32px]"
+                            className="absolute inset-x-0 bottom-0 top-20 rounded-t-[2rem] border-t border-[var(--oneui-border)] bg-[var(--oneui-panel)] px-5 pb-28 pt-4 shadow-[0_-16px_48px_rgba(0,0,0,0.25)] backdrop-blur-[40px]"
                         >
-                            <div className="mx-auto mb-5 h-1.5 w-14 rounded-full bg-[var(--oneui-sheet-handle)]" />
-                            <div className="mb-4">
-                                <div className="oneui-eyebrow">Apps</div>
-                                <div className="text-[2.35rem] font-semibold leading-none tracking-[-0.07em] text-[var(--oneui-text)]">App drawer</div>
-                            </div>
-                            <div className="rounded-[1.65rem] bg-[var(--oneui-surface-2)] px-4 py-3">
-                                <div className="flex items-center gap-3 text-[var(--oneui-text-soft)]">
-                                    <Search size={17} />
-                                    <span className="text-sm font-medium">Search apps</span>
+                            <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-[var(--oneui-sheet-handle)]" />
+                            <div className="mb-3 rounded-full bg-[var(--oneui-surface-2)] px-4 py-2.5">
+                                <div className="flex items-center gap-2.5 text-[var(--oneui-text-soft)]">
+                                    <Search size={16} />
+                                    <span className="text-[13px] font-medium">Search apps</span>
                                 </div>
                             </div>
-                            <div className="mt-6 grid grid-cols-4 gap-x-3 gap-y-7 px-1">
+                            <div className="grid grid-cols-4 gap-x-2 gap-y-5 px-1 pt-2">
                                 {ONE_UI_LAUNCHER_APPS.map((item) => (
                                     <OneUiAppIcon key={item.app} app={item.app} label={item.label} icon={item.icon} />
                                 ))}
@@ -203,8 +205,8 @@ export function OneUiHomeScreen() {
             </AnimatePresence>
 
             {isJiggling ? (
-                <div className="absolute inset-x-8 bottom-44 rounded-[1.5rem] bg-black/42 px-5 py-4 text-center text-sm text-white backdrop-blur-xl">
-                    Edit mode enabled. Tap an icon to leave Samsung-style wiggle mode.
+                <div className="absolute inset-x-8 bottom-40 rounded-[1rem] bg-black/50 px-4 py-3 text-center text-[13px] text-white/90 backdrop-blur-xl">
+                    Edit mode enabled
                 </div>
             ) : null}
         </motion.div>

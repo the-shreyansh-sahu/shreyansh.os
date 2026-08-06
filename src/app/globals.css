@@ -87,26 +87,26 @@
   --radius-xl: 16px;
   --radius-xxl: 20px;
 
-  /* One UI 7 specific */
-  --oneui-bg: #f4f4f7;
-  --oneui-panel: rgba(249, 249, 252, 0.94);
+  /* One UI 7 specific — Samsung official colors */
+  --oneui-bg: #f5f5f7;
+  --oneui-panel: rgba(245, 245, 248, 0.94);
   --oneui-surface: rgba(255, 255, 255, 0.92);
-  --oneui-surface-2: #ececf1;
-  --oneui-border: rgba(20, 23, 32, 0.08);
-  --oneui-border-strong: rgba(20, 23, 32, 0.16);
+  --oneui-surface-2: #e8e8ed;
+  --oneui-border: rgba(0, 0, 0, 0.08);
+  --oneui-border-strong: rgba(0, 0, 0, 0.14);
   --oneui-text: #10131a;
-  --oneui-text-soft: #5d6472;
-  --oneui-text-faint: #8b92a0;
+  --oneui-text-soft: #6b7280;
+  --oneui-text-faint: #9ca3af;
   --oneui-text-hero: #ffffff;
-  --oneui-accent: #0f6fff;
-  --oneui-accent-soft: rgba(15, 111, 255, 0.12);
+  --oneui-accent: #0381fe;
+  --oneui-accent-soft: rgba(3, 129, 254, 0.12);
   --oneui-success: #14a073;
   --oneui-success-soft: rgba(20, 160, 115, 0.12);
   --oneui-amber: #f0a13c;
   --oneui-amber-soft: rgba(240, 161, 60, 0.12);
-  --oneui-widget: rgba(255, 255, 255, 0.72);
-  --oneui-widget-strong: rgba(255, 255, 255, 0.62);
-  --oneui-search-bg: rgba(248, 249, 252, 0.84);
+  --oneui-widget: rgba(255, 255, 255, 0.78);
+  --oneui-widget-strong: rgba(255, 255, 255, 0.65);
+  --oneui-search-bg: rgba(240, 240, 244, 0.92);
 }
 
 /* ── LIGHT THEME ────────────────────────────────────────────────────────── */
@@ -195,25 +195,25 @@
 }
 
 :root[data-theme="dark"] {
-  --oneui-bg: #151922;
-  --oneui-panel: rgba(25, 30, 40, 0.94);
-  --oneui-surface: rgba(31, 37, 49, 0.94);
-  --oneui-surface-2: #222938;
-  --oneui-border: rgba(255, 255, 255, 0.07);
+  --oneui-bg: #12151c;
+  --oneui-panel: rgba(22, 26, 35, 0.95);
+  --oneui-surface: rgba(30, 35, 48, 0.94);
+  --oneui-surface-2: #252b3a;
+  --oneui-border: rgba(255, 255, 255, 0.08);
   --oneui-border-strong: rgba(255, 255, 255, 0.14);
-  --oneui-text: #f4f7fb;
-  --oneui-text-soft: #b2bac8;
-  --oneui-text-faint: #7f899b;
+  --oneui-text: #f0f3f8;
+  --oneui-text-soft: #9ba3b5;
+  --oneui-text-faint: #6b7589;
   --oneui-text-hero: #ffffff;
-  --oneui-accent: #7fb3ff;
-  --oneui-accent-soft: rgba(127, 179, 255, 0.16);
+  --oneui-accent: #3e91ff;
+  --oneui-accent-soft: rgba(62, 145, 255, 0.18);
   --oneui-success: #47d59f;
-  --oneui-success-soft: rgba(71, 213, 159, 0.16);
+  --oneui-success-soft: rgba(71, 213, 159, 0.18);
   --oneui-amber: #f4bb63;
-  --oneui-amber-soft: rgba(244, 187, 99, 0.16);
-  --oneui-widget: rgba(29, 35, 46, 0.82);
-  --oneui-widget-strong: rgba(38, 46, 61, 0.86);
-  --oneui-search-bg: rgba(31, 38, 51, 0.9);
+  --oneui-amber-soft: rgba(244, 187, 99, 0.18);
+  --oneui-widget: rgba(26, 32, 44, 0.85);
+  --oneui-widget-strong: rgba(34, 42, 58, 0.88);
+  --oneui-search-bg: rgba(28, 34, 48, 0.92);
 }
 
 @layer components {
@@ -237,21 +237,21 @@
   /* One UI bottom sheet */
   .oneui-sheet {
     background: var(--oneui-panel);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
+    backdrop-filter: blur(40px) saturate(1.5);
+    -webkit-backdrop-filter: blur(40px) saturate(1.5);
     border-top: 1px solid var(--oneui-border);
-    border-radius: 28px 28px 0 0;
-    box-shadow: 0 -18px 36px rgba(15, 19, 26, 0.14);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.12);
   }
 
   .oneui-card {
     background: var(--oneui-surface);
     border: 1px solid var(--oneui-border);
-    border-radius: 28px;
-    padding: 18px;
+    border-radius: 20px;
+    padding: 16px;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.72),
-      0 12px 30px rgba(15, 19, 26, 0.06);
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      0 8px 24px rgba(0, 0, 0, 0.05);
   }
 
   .oneui-row {
@@ -305,11 +305,11 @@
   }
 
   .oneui-metric {
-    border-radius: 24px;
+    border-radius: 20px;
     background: var(--oneui-surface);
     border: 1px solid var(--oneui-border);
-    padding: 16px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
+    padding: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
   .oneui-metric-blue {
@@ -342,16 +342,16 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-height: 44px;
+    min-height: 48px;
     border-radius: 999px;
-    padding: 0 16px;
+    padding: 0 20px;
     font-size: 0.92rem;
     font-weight: 700;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.15s ease, opacity 0.15s ease;
   }
 
   .oneui-button:active {
-    transform: scale(0.985);
+    transform: scale(0.97);
   }
 
   .oneui-button-primary {
@@ -367,13 +367,13 @@
 
   .oneui-input {
     width: 100%;
-    border-radius: 22px;
+    border-radius: 16px;
     border: 1px solid var(--oneui-border);
     background: var(--oneui-surface);
-    padding: 15px 18px;
+    padding: 14px 16px;
     color: var(--oneui-text);
     outline: none;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .oneui-input::placeholder {
@@ -387,15 +387,15 @@
 
   .oneui-app-tile {
     display: flex;
-    height: 66px;
-    width: 66px;
+    height: 56px;
+    width: 56px;
     align-items: center;
     justify-content: center;
-    border-radius: 1.45rem;
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.26),
-      0 10px 22px rgba(16, 24, 40, 0.18);
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 4px 12px rgba(0, 0, 0, 0.12);
   }
 
   .oneui-quick-toggle {
@@ -403,25 +403,25 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 12px;
-    border-radius: 24px;
+    gap: 10px;
+    border-radius: 20px;
     background: var(--oneui-surface);
     border: 1px solid var(--oneui-border);
     color: var(--oneui-text);
-    padding: 16px;
+    padding: 14px;
     font-weight: 600;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
   .oneui-quick-toggle-active {
-    background: linear-gradient(180deg, rgba(91, 154, 255, 0.2), var(--oneui-surface));
-    border-color: rgba(91, 154, 255, 0.16);
+    background: linear-gradient(180deg, rgba(3, 129, 254, 0.15), var(--oneui-surface));
+    border-color: rgba(3, 129, 254, 0.12);
   }
 
   .oneui-quick-toggle-icon {
     display: flex;
-    height: 38px;
-    width: 38px;
+    height: 36px;
+    width: 36px;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
@@ -429,17 +429,18 @@
   }
 
   .oneui-slider-track {
-    height: 10px;
+    height: 8px;
     border-radius: 999px;
     background: var(--oneui-surface-2);
     overflow: hidden;
-    box-shadow: inset 0 1px 2px rgba(17, 24, 39, 0.08);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
   }
 
   .oneui-slider-fill {
     height: 100%;
     border-radius: inherit;
     background: var(--oneui-accent);
+    transition: width 0.15s ease;
   }
 
   .oneui-clear-button {
@@ -450,46 +451,47 @@
 
   .oneui-recents-card {
     width: 100%;
-    border-radius: 30px;
+    border-radius: 20px;
     background: var(--oneui-surface);
     border: 1px solid var(--oneui-border);
-    padding: 18px;
+    padding: 16px;
     text-align: left;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.72),
-      0 12px 30px rgba(15, 19, 26, 0.06);
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      0 8px 24px rgba(0, 0, 0, 0.06);
   }
 
   .oneui-gesture-pill {
-    height: 5px;
-    width: 132px;
+    height: 4px;
+    width: 136px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   }
 
   .oneui-nav-hint {
-    color: rgba(255, 255, 255, 0.84);
-    font-size: 0.78rem;
-    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    font-weight: 500;
   }
 
   .oneui-nav-button {
     display: flex;
-    height: 40px;
-    width: 40px;
+    height: 36px;
+    width: 36px;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
     background: var(--oneui-surface-2);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: var(--oneui-text);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 
   .oneui-squircle-mask {
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0 50C0 5 5 0 50 0s50 5 50 50-5 50-50 50S0 95 0 50z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0z'/%3E%3C/svg%3E");
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0 50C0 5 5 0 50 0s50 5 50 50-5 50-50 50S0 95 0 50z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0z'/%3E%3C/svg%3E");
     -webkit-mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
   }
@@ -523,18 +525,21 @@
   color-scheme: light;
 }
 
-/* Smooth token transitions */
+/* Smooth token transitions — performance-optimized */
 *,
 *::before,
 *::after {
   transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    color 0.2s ease;
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.15s ease;
 }
 
 canvas,
-[data-no-theme-transition] {
+[data-no-theme-transition],
+.oneui-gesture-pill,
+.oneui-nav-button,
+.oneui-app-tile {
   transition: none !important;
 }
 
@@ -543,14 +548,14 @@ canvas,
 }
 
 :root[data-theme="dark"] .oneui-wallpaper {
-  background: #7087ab;
+  background: #607088;
 }
 
 .oneui-wallpaper-glow {
   position: absolute;
   inset: auto 0 0 0;
-  height: 44%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(9, 10, 16, 0.12) 42%, rgba(9, 10, 16, 0.34));
+  height: 40%;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.08) 30%, rgba(0, 0, 0, 0.25) 100%);
 }
 
 /* Boot cursor blink */

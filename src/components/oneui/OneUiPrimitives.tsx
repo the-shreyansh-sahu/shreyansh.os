@@ -14,7 +14,7 @@ export function OneUiSection({
     className?: string
 }) {
     return (
-        <section className={cn('space-y-3', className)}>
+        <section className={cn('space-y-2.5', className)}>
             <div className="px-1">
                 {eyebrow ? <div className="oneui-eyebrow">{eyebrow}</div> : null}
                 <h2 className="oneui-section-title">{title}</h2>
@@ -54,7 +54,7 @@ export function OneUiRow({
             onClick={onClick}
             className={cn(
                 'oneui-row w-full text-left',
-                onClick ? 'active:scale-[0.995]' : '',
+                onClick ? 'active:scale-[0.99]' : '',
                 className
             )}
         >

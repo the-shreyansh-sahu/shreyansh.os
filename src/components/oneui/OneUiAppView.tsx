@@ -22,14 +22,14 @@ export function OneUiAppView({ route, children }: OneUiAppViewProps) {
         <AnimatePresence>
             {isActive ? (
                 <motion.div
-                    initial={{ y: '100%', opacity: 0.72, scale: 0.985, borderTopLeftRadius: 34, borderTopRightRadius: 34 }}
-                    animate={{ y: 0, opacity: 1, scale: 1, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
-                    exit={{ y: '100%', opacity: 0, scale: 0.985, borderTopLeftRadius: 34, borderTopRightRadius: 34 }}
-                    transition={{ type: 'spring', damping: 30, stiffness: 270 }}
-                    className="absolute inset-0 z-[200] flex flex-col overflow-hidden bg-[var(--oneui-bg)] text-[var(--oneui-text)] shadow-[0_-8px_26px_rgba(0,0,0,0.2)] pointer-events-auto"
+                    initial={{ y: '100%', opacity: 0.85, scale: 0.96 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    exit={{ y: '100%', opacity: 0, scale: 0.96 }}
+                    transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                    className="absolute inset-0 z-[200] flex flex-col overflow-hidden bg-[var(--oneui-bg)] text-[var(--oneui-text)] pointer-events-auto"
                 >
                     <OneUiAppHeader title={title} subtitle={item?.subtitle} scrollContainerRef={scrollRef} />
-                    <div ref={scrollRef} className="flex-1 overflow-y-auto pb-24 scroll-smooth">
+                    <div ref={scrollRef} className="flex-1 overflow-y-auto pb-24">
                         {children}
                     </div>
                 </motion.div>

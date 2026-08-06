@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { RefObject } from 'react'
-import { ChevronLeft, MoreVertical, Search } from 'lucide-react'
+import { ChevronLeft, MoreHorizontal, Search } from 'lucide-react'
 import { useOneUiStore } from '../../store/oneUiStore'
 
 interface OneUiAppHeaderProps {
@@ -15,41 +15,53 @@ export function OneUiAppHeader({ title, subtitle, scrollContainerRef }: OneUiApp
     const goBack = useOneUiStore((s) => s.goBack)
     const { scrollY } = useScroll({ container: scrollContainerRef })
 
-    const height = useTransform(scrollY, [0, 120], [160, 88])
-    const fontSize = useTransform(scrollY, [0, 120], [36, 22])
-    const subtitleOpacity = useTransform(scrollY, [0, 64], [1, 0])
-    const titleY = useTransform(scrollY, [0, 120], [0, -20])
+    const height = useTransform(scrollY, [0, 140], [140, 56])
+    const fontSize = useTransform(scrollY, [0, 140], [28, 18])
+    const fontWeight = useTransform(scrollY, [0, 140], [300, 600])
+    const subtitleOpacity = useTransform(scrollY, [0, 80], [1, 0])
+    const titleY = useTransform(scrollY, [0, 140], [0, -8])
+    const buttonsOpacity = useTransform(scrollY, [0, 60], [1, 0.6])
 
     return (
         <motion.div
             style={{ height }}
-            className="sticky left-0 right-0 top-0 z-40 overflow-hidden border-b border-[var(--oneui-border)] bg-[var(--oneui-bg)]/94 px-5 pb-4 pt-11 backdrop-blur-[24px]"
+            className="sticky left-0 right-0 top-0 z-40 overflow-hidden bg-[var(--oneui-bg)]/95 backdrop-blur-[20px]"
         >
-            <div className="mb-3 flex items-center justify-between">
-                <button
+            <div className="flex items-center justify-between px-4 pt-10 pb-2">
+                <motion.button
                     onClick={goBack}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--oneui-surface-2)] text-[var(--oneui-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]"
+                    style={{ opacity: buttonsOpacity }}
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--oneui-surface-2)]/80 text-[var(--oneui-text)]"
                 >
-                    <ChevronLeft size={18} />
-                </button>
-                <div className="flex items-center gap-2">
-                    <button className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--oneui-surface-2)] text-[var(--oneui-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]">
-                        <Search size={17} />
-                    </button>
-                    <button className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--oneui-surface-2)] text-[var(--oneui-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]">
-                        <MoreVertical size={17} />
-                    </button>
+                    <ChevronLeft size={18} strokeWidth={2.5} />
+                </motion.button>
+                <div className="flex items-center gap-1.5">
+                    <motion.button
+                        style={{ opacity: buttonsOpacity }}
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--oneui-surface-2)]/80 text-[var(--oneui-text)]"
+                    >
+                        <Search size={16} strokeWidth={2.2} />
+                    </motion.button>
+                    <motion.button
+                        style={{ opacity: buttonsOpacity }}
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--oneui-surface-2)]/80 text-[var(--oneui-text)]"
+                    >
+                        <MoreHorizontal size={18} strokeWidth={2.2} />
+                    </motion.button>
                 </div>
             </div>
-            <div className="relative flex h-full flex-col justify-end">
+            <div className="flex h-full flex-col justify-end px-5 pb-3">
                 <motion.h1
-                    className="font-semibold tracking-[-0.06em] text-[var(--oneui-text)]"
-                    style={{ fontSize, y: titleY }}
+                    className="tracking-[-0.03em] text-[var(--oneui-text)]"
+                    style={{ fontSize, fontWeight, y: titleY }}
                 >
                     {title}
                 </motion.h1>
                 {subtitle ? (
-                    <motion.div style={{ opacity: subtitleOpacity }} className="pt-2 text-sm text-[var(--oneui-text-soft)]">
+                    <motion.div
+                        style={{ opacity: subtitleOpacity }}
+                        className="pt-1 text-[13px] text-[var(--oneui-text-soft)]"
+                    >
                         {subtitle}
                     </motion.div>
                 ) : null}

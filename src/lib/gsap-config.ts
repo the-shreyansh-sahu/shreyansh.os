@@ -1,6 +1,5 @@
 import { gsap } from 'gsap'
-import { TextPlugin } from 'gsap/TextPlugin'
-import { Flip } from 'gsap/Flip'
+import { TextPlugin, Flip } from 'gsap/all'
 
 export function registerGSAP() {
     if (typeof window !== 'undefined') {
